@@ -57,7 +57,7 @@ namespace ITS
                                 Session["Email"] = rdr.GetValue(3).ToString();
                                 Session["Password"] = rdr.GetValue(6).ToString();
 
-                                Response.Redirect("DashBoadSP.aspx");
+                                Response.Redirect("Default.aspx");
                             }
                             else
                             {
