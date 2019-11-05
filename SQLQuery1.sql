@@ -1,0 +1,1 @@
+﻿update users set password = '$2a$10$Ta3BP9dgDdDbpkf/zgT3Uuw.EJwXyvH5iHNnF4dP2Nd6Xd5AMrx6W' where id = 'admin'
