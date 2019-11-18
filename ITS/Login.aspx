@@ -4,9 +4,9 @@
 
 <html>
 <head runat="server">
-	<link href="Styles/login.css" rel="stylesheet" />
+	<link href="Styles/Css/login.css" rel="stylesheet" />
 	<script src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.4.min.js" type="text/javascript"></script>
-	<script src="Validation.js" type="text/javascript"></script>
+	<script src="Styles/Javascript/Validation.js" type="text/javascript"></script>
 	<title>Login</title>
 </head>
 <body>

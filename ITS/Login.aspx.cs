@@ -33,6 +33,9 @@ namespace ITS
 
             // max length
             tbUserID.Attributes.Add("maxlength", "8");
+
+            // register authority to session 
+            Session["Authority"] = isAdmin.ToString();
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -71,7 +74,7 @@ namespace ITS
                                 Session["UserID"] = tbUserID.Text.Trim();
                                 Session["FirstName"] = rdr.GetValue(1).ToString();
                                 Session["LastName"] = rdr.GetValue(2).ToString();
-                                Session["Authority"] = rdr.GetValue(4).ToString();
+                                //Session["Authority"] = rdr.GetValue(4).ToString();
                                 Session["Email"] = rdr.GetValue(3).ToString();
                                 //Session["Password"] = rdr.GetValue(6).ToString();
                             }
@@ -104,7 +107,7 @@ namespace ITS
             // Depends on the user type, dashboad is different
             if (isAdmin)
             {
-                Response.Redirect("DashBoadSP.aspx");
+                Response.Redirect("DashBoardSP.aspx");
             }
             else 
             {
@@ -118,8 +121,8 @@ namespace ITS
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
                 SqlCommand cmd = new SqlCommand("" +
-                    "Insert into user_login_histories(user_id, last_login_date) " +
-                    "values(@userId, CURRENT_TIMESTAMP)", con);
+                    "INSERT INTO user_login_histories(user_id, last_login_date) " +
+                    "VALUES(@userId, CURRENT_TIMESTAMP)", con);
 
                 cmd.Parameters.AddWithValue("@userId", tbUserID.Text);
 

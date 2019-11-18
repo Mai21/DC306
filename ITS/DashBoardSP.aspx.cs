@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ITS
 {
-    public partial class DashBoadSP : System.Web.UI.Page
+    public partial class DashBoardSP : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
