@@ -20,6 +20,9 @@ namespace ITS
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            /* Check the existance of email */
+
+            
             /* Reset Password */
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
@@ -38,8 +41,20 @@ namespace ITS
                 }
             }
             /* mail 
+             * 
+             */
             MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("indigo.shadow.smiles@gmail.com");
             mail.To.Add("pippuriric@gmail.com");
+            mail.Subject = "This mail is send from asp.net application";
+            mail.Body = "This is Email Body Text";
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("indigo.shadow.smiles@gmail.com", "kepwdtpzvylyqljj");
+            smtp.Send(mail);
+
+            /*mail.To.Add("pippuriric@gmail.com");
             mail.From = new MailAddress("indigo.shadow.smiles@gmail.com", "Email head", System.Text.Encoding.UTF8);
             mail.Subject = "This mail is send from asp.net application";
             mail.SubjectEncoding = System.Text.Encoding.UTF8;

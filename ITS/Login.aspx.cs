@@ -13,8 +13,23 @@ namespace ITS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // add setting of hidden to passowrd box 
+            txtPassword.Attributes["type"] = "password";
+            
             txtPassword.Attributes.Add("placeholder", "Password");
-            txtUserID.Attributes.Add("placeholder", "UserID");
+            txtPassword.Attributes.Add("maxlength", "8");
+
+            // if the technical support accessed, placeholder will be UserID 
+            if (Request.QueryString["parameter1"] == "ts")
+            {
+                txtUserID.Attributes.Add("placeholder", "UserID");
+            }
+            else 
+            {
+                txtUserID.Attributes.Add("placeholder", "StudentID");
+            }
+            // max length
+            txtUserID.Attributes.Add("maxlength", "8");
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -43,7 +58,7 @@ namespace ITS
                             if ((int)rdr.GetValue(5) == (int)CommonUtil.RECORD_STATUS.INVALID)
                             {
                                 // Invalid ID
-                                lbErrMessage.Text = "This UserID is Invalid";
+                                lbErrMessageUserID.Text = "This StudentID is Invalid";
                                 return;
                             }
                             // check password
@@ -55,20 +70,20 @@ namespace ITS
                                 Session["LastName"] = rdr.GetValue(2).ToString();
                                 Session["Authority"] = rdr.GetValue(4).ToString();
                                 Session["Email"] = rdr.GetValue(3).ToString();
-                                Session["Password"] = rdr.GetValue(6).ToString();
+                                //Session["Password"] = rdr.GetValue(6).ToString();
 
                                 Response.Redirect("Default.aspx");
                             }
                             else
                             {
-                                lbErrMessage.Text = "Password is not correct";
+                                lbErrMessagePassword.Text = "Password is not correct";
                                 //Response.Redirect("DashBoadSP.aspx");
                             }
                         }
                         else
                         {
                             // No employee Id exists
-                            lbErrMessage.Text = "UserName is not registered";
+                            lbErrMessageUserID.Text = "Student ID is not registered";
                             return;
                         }
                     }
@@ -77,7 +92,8 @@ namespace ITS
                 {
                     // System Error
                     Console.WriteLine(ex.Message);
-                    lbErrMessage.Text = "System Error!";
+                    // Move to an Error page
+                    //lbErrMessage.Text = "System Error!";
                     return;
                 }
             }
