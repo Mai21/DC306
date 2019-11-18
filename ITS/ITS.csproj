@@ -81,7 +81,6 @@
     <Content Include="images\banner.jpg" />
     <Content Include="LICENSE.txt" />
     <Content Include="Login.aspx" />
-    <Content Include="LoginSP.aspx" />
     <Content Include="Recover.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Styles\main.css" />
@@ -139,13 +138,6 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginSP.aspx.cs">
-      <DependentUpon>LoginSP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginSP.aspx.designer.cs">
-      <DependentUpon>LoginSP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recover.aspx.cs">
