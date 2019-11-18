@@ -33,13 +33,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrMessageUserID;
 
         /// <summary>
-        /// txtUserID control.
+        /// tbUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserID;
+        protected global::System.Web.UI.WebControls.TextBox tbUserID;
 
         /// <summary>
         /// lbErrMessagePassword control.
@@ -51,13 +51,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrMessagePassword;
 
         /// <summary>
-        /// txtPassword control.
+        /// tbPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
         /// btnLogin control.

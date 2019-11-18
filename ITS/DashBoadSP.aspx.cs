@@ -11,11 +11,15 @@ namespace ITS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbResultUserID.Text = (string)(Session["UserID"]);
-            lbResultFirstName.Text = (string)(Session["FirstName"]);
-            lbResultLastName.Text = (string)(Session["LastName"]);
-            lbResultEmail.Text = (string)(Session["Email"]);
-            lbResultPassword.Text = (string)(Session["Password"]);
+            //lbResultUserID.Text = (string)(Session["UserID"]);
+            //lbResultFirstName.Text = (string)(Session["FirstName"]);
+            //lbResultLastName.Text = (string)(Session["LastName"]);
+            //lbResultEmail.Text = (string)(Session["Email"]);
+        }
+
+        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

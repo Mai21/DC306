@@ -3,10 +3,12 @@
     Home
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
   <div class="dashboard" style="padding-left:20px"> </div>
+    <h1>Hi,  <asp:Label ID="lbFirstName" runat="server" Text="Tuam Student"></asp:Label></h1>
+    <p>Welcome to ServiceWow Portal where your technical issues are being resolve within 24 hours.</p>
+    
   <h1>Hi Tuam Student</h1>
     <p>Welcome to ServiceWow Portal where your technical issues are being resolve within 24 hours.</p>
     <p>The Time Now is @DateTime.Now</p>

@@ -150,6 +150,11 @@ textarea:-ms-input-placeholder {
     padding-right: 1rem;
 }
 
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
 .py-2 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -184,6 +189,7 @@ textarea:-ms-input-placeholder {
     background-color: #000;
 }
 
+/* Font Color */
 .text-red {
     color: #ff0000;
 }
@@ -196,6 +202,154 @@ textarea:-ms-input-placeholder {
     color: #4a5568;
 }
 
+.text-gray-900 {
+    color: #1a202c;
+}
+
 .hover\:text-gray-700:hover {
     color: #4a5568;
+}
+
+.text-black {
+    color: #000;
+}
+
+.hover\:text-black:hover {
+    color: #000;
+}
+
+.focus\:text-black:focus {
+    color: #000;
+}
+
+
+
+
+
+/* list */
+.list-none {
+    list-style-type: none;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+/*.container {
+    width: 100%;
+}*/
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.border-b {
+    border-bottom-width: 1px;
+}
+
+.border-gray-300 {
+    border-color: #e2e8f0;
+}
+
+.hover\:border-gray-300:hover {
+    border-color: #e2e8f0;
+}
+
+.focus\:border-gray-300:focus {
+    border-color: #e2e8f0;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+
+.hover\:bg-gray-300:hover {
+    background-color: #e2e8f0;
+}
+
+.focus\:bg-gray-300:focus {
+    background-color: #e2e8f0;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.w-2\/5 {
+    width: 40%;
+}
+
+.w-1\/5 {
+    width: 20%;
+}
+
+.w-10 {
+    width: 2.5rem;
+}
+
+.h-10 {
+    height: 2.5rem;
+}
+
+.mr-3 {
+    margin-right: 0.75rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.hover\:font-bold:hover {
+    font-weight: 700;
+}
+
+.focus\:font-bold:focus {
+    font-weight: 700;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+
+/* Title Maintenance */
+#inputArea {
+    display:none;
+}
+
+#buttonShowInputArea {
+    display: block;
 }
