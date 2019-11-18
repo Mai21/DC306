@@ -6,7 +6,7 @@
 <head runat="server">
 	<link href="Styles/login.css" rel="stylesheet" />
 	<script src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.4.min.js" type="text/javascript"></script>
-	<script src="CheckExistance.js" type="text/javascript"></script>
+	<script src="Validation.js" type="text/javascript"></script>
 	<title>Login</title>
 </head>
 <body>
@@ -15,13 +15,13 @@
 			<asp:Label ID="lbErrMessageUserID" class="text-red" runat="server" Text=""></asp:Label>
 		</div>
 		<div class="relative border rounded mb-4 shadow appearance-none label-floating">
-			<asp:TextBox ID="txtUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="1"></asp:TextBox>
+			<asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="1"></asp:TextBox>
 		</div>
         <div>
 			<asp:Label ID="lbErrMessagePassword" class="text-red" runat="server" Text=""></asp:Label>
 		</div>
 		<div class="relative border rounded mb-4 shadow appearance-none label-floating"> 
-			<asp:TextBox ID="txtPassword" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="2"></asp:TextBox>
+			<asp:TextBox ID="tbPassword" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="2"></asp:TextBox>
 		</div>
 		<div class="flex items-center justify-between">
 			<asp:Button ID="btnLogin" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Login" accesskey="3" OnClientClick="return validationLogin();"  OnClick="btnLogin_Click"/>
