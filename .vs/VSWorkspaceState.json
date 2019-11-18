@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ITS",
+    "\\ITS\\Styles",
+    "\\ITS\\Styles\\Css"
   ],
+  "SelectedNode": "\\ITS\\CreateTicket.aspx",
   "PreviewInSolutionExplorer": false
 }

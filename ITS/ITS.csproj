@@ -85,6 +85,8 @@
     <Content Include="Login.aspx" />
     <Content Include="Recover.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Styles\Css\main.css" />
+    <Content Include="Styles\Html\header.html" />
     <Content Include="Styles\login.css" />
     <Content Include="Styles\main.css" />
     <Content Include="TitleMaintenace.aspx" />
@@ -208,6 +210,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Styles\Jquery\" />
+    <Folder Include="Styles\JS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
