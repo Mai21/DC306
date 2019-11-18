@@ -42,16 +42,16 @@
             <asp:TextBox ID="txtboxDesc" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" Height="200px" AutoCompleteType="Disabled" TextMode="MultiLine" Wrap="true"></asp:TextBox>
         </div>
 
-        <%-- This is the Button for Clear --%>
-        <div class="flex items-center justify-between" style="float:right">
-            <asp:Button ID="btnClear" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click" />
-        </div>
 
         <%-- This is the Button for Submit --%>
         <div class="flex items-center justify-between" style="float:right">
-            <asp:Button ID="btnSubmit" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Submit"  Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnSubmit_Click" />
+            <asp:Button ID="btnSubmit" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Submit"  Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnSubmit_Click"/>
         </div>
 
+         <%-- This is the Button for Clear --%>
+        <div class="flex items-center justify-between" style="float:right">
+            <asp:Button ID="btnClear" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnSubmit_Click"/>
+        </div>
          
     </form>
 </asp:Content>
