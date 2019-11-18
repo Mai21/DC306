@@ -13,9 +13,10 @@ namespace ITS
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check the authority
-            if ((string)(Session["Authority"]) == "true")
+            System.Diagnostics.Debug.WriteLine((string)(Session["Authority"]));
+
+            if ((string)(Session["Authority"]) != "True")
             {
-                Response.Write("<script>alert('No authority to access this page!')</script>");
                 Response.Redirect("Login.aspx");
             }
 
