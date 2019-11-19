@@ -3,6 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
         </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+        <style type="text/css">
+            .auto-style1 {
+                float: right;
+                width: 4px;
+            }
+        </style>
         </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
    
@@ -45,13 +51,12 @@
 
         <%-- This is the Button for Submit --%>
         <div class="flex items-center justify-between" style="float:right">
-            <asp:Button ID="btnSubmit" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Submit"  Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnSubmit_Click"/>
+            <asp:Button ID="btnSubmit" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Submit" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px"/>
         </div>
 
          <%-- This is the Button for Clear --%>
         <div class="flex items-center justify-between" style="float:right">
-            <asp:Button ID="btnClear" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnSubmit_Click"/>
+            <asp:Button ID="btnClear" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click1"/>
         </div>
-         
     </form>
 </asp:Content>

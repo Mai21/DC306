@@ -25,7 +25,7 @@
 
                 <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
                     <li> <a href="Default.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Dashboard</a></li>
-                    <li> <a href="/CreateTicket.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Create New Issue</a></li>
+                    <li> <a href="/CreateTicket.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Create Ticket</a></li>
                     <li> <a href="/Archive.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Archive</a></li>
                     <li> <a href="/Aboutus.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">About Us</a></li>
                 </ul>
@@ -38,9 +38,7 @@
      
         <div class="clear"></div>
         <footer class="font-sans bg-black text-white py-8 px-4">
-            <div class="mx-auto max-w-xl overflow-hidden flex justify-between items-center">
-                 <p class="inline-block py-2 px-3 text-gray-700 text-xs items-center"> ©2019 Tuam Academy. All rights reserved.</p>
-             </div>
+            <div class="pt-4 mt-4 text-gray-700 border-t border-gray-900 text-center"> ©2019 Tuam Academy. All rights reserved.</div>
         </footer>
   </body>
 </html>
