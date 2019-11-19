@@ -14,13 +14,9 @@ namespace ITS
 
         }
 
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            txtboxDesc.Text = string.Empty;
-        }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            txtboxDesc.Text = string.Empty;
 
         }
     }
