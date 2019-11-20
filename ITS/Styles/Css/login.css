@@ -1,12 +1,22 @@
 ﻿body {
 }
 
+html {
+    box-sizing: border-box; /* 1 */
+    font-family: sans-serif; /* 2 */
+}
+
 *,
 *::before,
 *::after {
     border-width: 0;
     border-style: solid;
     border-color: #e2e8f0;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 a {
@@ -45,37 +55,77 @@ textarea:-ms-input-placeholder {
     border-radius: 0.25rem;
 }
 
+.rounded-full {
+    border-radius: 9999px;
+}
+
 .shadow {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-.text-sm {
-    font-size: 0.875rem;
-}
-
-.text-xs {
-    font-size: 0.75rem;
-}
-
-.text-white {
-    color: #fff;
-}
-
-.w-full {
-    width: 100%;
+.overflow-hidden {
+    overflow: hidden;
 }
 
 .border {
     border-width: 1px;
 }
 
+/* flex */
 .flex {
     display: flex;
 }
 
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.sm\:flex-row {
+    flex-direction: row;
+}
+
+
+/* text align */
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+
+/* font */
 .font-sans {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
-        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.hover\:font-bold:hover {
+    font-weight: 700;
+}
+
+.focus\:font-bold:focus {
+    font-weight: 700;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.hover\:font-medium:hover {
+    font-weight: 500;
+}
+
+.focus\:font-medium:focus {
+    font-weight: 500;
 }
 
 .inline-block {
@@ -86,11 +136,27 @@ textarea:-ms-input-placeholder {
     align-items: center;
 }
 
+/* justify */
+.justify-center {
+    justify-content: center;
+}
+
 .justify-between {
     justify-content: space-between;
 }
 
-.label-floating input:not(:placeholder-shown) {
+.justify-start {
+    justify-content: flex-start;
+}
+
+.sm\:justify-center {
+    justify-content: center;
+}
+
+
+
+
+/*.label-floating input:not(:placeholder-shown) {
     padding-top: 1.4rem;
 }
 
@@ -99,10 +165,15 @@ textarea:-ms-input-placeholder {
     font-size: 0.7rem;
     transition: all 0.1s ease-in-out;
     color: #8795a1;
-}
+}*/
 
 .leading-normal {
     line-height: 1.5;
+}
+
+/* width */
+.w-full {
+    width: 100%;
 }
 
 .max-w-md {
@@ -113,13 +184,52 @@ textarea:-ms-input-placeholder {
     max-width: 36rem;
 }
 
+.w-2\/5 {
+    width: 40%;
+}
+
+.w-1\/5 {
+    width: 20%;
+}
+
+.w-10 {
+    width: 2.5rem;
+}
+
+.sm\:w-3\/4 {
+    width: 75%;
+}
+
+.sm\:w-1\/4 {
+    width: 25%;
+}
+
+
+
+.h-10 {
+    height: 2.5rem;
+}
+
+/* margin */
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mr-3 {
+    margin-right: 0.75rem;
+}
+
 .mb-4 {
     margin-bottom: 1rem;
 }
 
-.mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+.mb-6 {
+    margin-bottom: 1.5rem;
 }
 
 .my-8 {
@@ -127,22 +237,24 @@ textarea:-ms-input-placeholder {
     margin-bottom: 2rem;
 }
 
-.overflow-hidden {
-    overflow: hidden;
+/*  padding */
+.p-0 {
+    padding: 0;
 }
 
-.pb-8 {
-    padding-bottom: 2rem;
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
-
-.pt-6 {
-    padding-top: 1.5rem;
-}
-
 
 .px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+}
+
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 }
 
 .px-4 {
@@ -155,9 +267,25 @@ textarea:-ms-input-placeholder {
     padding-bottom: 1rem;
 }
 
-.py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+.pt-6 {
+    padding-top: 1.5rem;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.pl-6 {
+    padding-left: 1.5rem;
+}
+
+.pb-6 {
+    padding-bottom: 1.5rem;
+}
+
+.pb-8 {
+    padding-bottom: 2rem;
 }
 
 .py-8 {
@@ -168,6 +296,14 @@ textarea:-ms-input-placeholder {
 .px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+}
+
+.sm\:pl-0 {
+    padding-left: 0;
+}
+
+.sm\:pb-0 {
+    padding-bottom: 0;
 }
 
 
@@ -181,12 +317,26 @@ textarea:-ms-input-placeholder {
     appearance: none;
 }
 
+.tracking-wide {
+    letter-spacing: 0.025em;
+}
+
+/* bg */
+
 .bg-black {
     background-color: #000;
 }
 
+.bg-white {
+    background-color: #FFF;
+}
+
 .hover\:bg-black:hover {
     background-color: #000;
+}
+
+.hover\:bg-gray-900:hover {
+    background-color: #1a202c;
 }
 
 /* Font Color */
@@ -210,6 +360,18 @@ textarea:-ms-input-placeholder {
     color: #4a5568;
 }
 
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-white {
+    color: #fff;
+}
+
 .text-black {
     color: #000;
 }
@@ -222,6 +384,12 @@ textarea:-ms-input-placeholder {
     color: #000;
 }
 
+.hover\:text-white:hover {
+    color: #fff;
+}
+
+
+
 
 
 
@@ -231,9 +399,6 @@ textarea:-ms-input-placeholder {
     list-style-type: none;
 }
 
-.p-0 {
-    padding: 0;
-}
 
 /*.container {
     width: 100%;
@@ -299,49 +464,13 @@ textarea:-ms-input-placeholder {
     align-items: flex-start;
 }
 
-.w-2\/5 {
-    width: 40%;
-}
 
-.w-1\/5 {
-    width: 20%;
-}
 
-.w-10 {
-    width: 2.5rem;
-}
 
-.h-10 {
-    height: 2.5rem;
-}
 
-.mr-3 {
-    margin-right: 0.75rem;
-}
 
-.rounded-full {
-    border-radius: 9999px;
-}
 
-.flex-1 {
-    flex: 1 1 0%;
-}
 
-.font-bold {
-    font-weight: 700;
-}
-
-.hover\:font-bold:hover {
-    font-weight: 700;
-}
-
-.focus\:font-bold:focus {
-    font-weight: 700;
-}
-
-.text-right {
-    text-align: right;
-}
 
 
 

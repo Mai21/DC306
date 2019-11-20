@@ -73,9 +73,9 @@
     <Content Include="Aboutus.aspx" />
     <Content Include="Archive.aspx" />
     <Content Include="ChangePassword.aspx" />
-    <Content Include="Validation.js" />
+    <Content Include="Styles\Javascript\Validation.js" />
     <Content Include="CreateTicket.aspx" />
-    <Content Include="DashBoadSP.aspx" />
+    <Content Include="DashBoardSP.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="default.html" />
     <Content Include="fonts\fontawesome-social-webfont.svg" />
@@ -85,7 +85,9 @@
     <Content Include="Login.aspx" />
     <Content Include="Recover.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="Styles\main.css" />
+    <Content Include="Styles\Css\main.css" />
+    <Content Include="Styles\Html\header.html" />
+    <Content Include="Styles\Css\login.css" />
     <Content Include="TitleMaintenace.aspx" />
     <Content Include="UserMaintenace.aspx.aspx" />
     <Content Include="Web.config" />
@@ -120,12 +122,12 @@
     <Compile Include="CreateTicket.aspx.designer.cs">
       <DependentUpon>CreateTicket.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DashBoadSP.aspx.cs">
-      <DependentUpon>DashBoadSP.aspx</DependentUpon>
+    <Compile Include="DashBoardSP.aspx.cs">
+      <DependentUpon>DashBoardSP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DashBoadSP.aspx.designer.cs">
-      <DependentUpon>DashBoadSP.aspx</DependentUpon>
+    <Compile Include="DashBoardSP.aspx.designer.cs">
+      <DependentUpon>DashBoardSP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

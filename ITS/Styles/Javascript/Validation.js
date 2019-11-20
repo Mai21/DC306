@@ -32,32 +32,26 @@ function validationLogin() {
 };
 
 function validationTitle() {
-    var title = document.getElementById('tbTitle').value;
+    var title = document.getElementById('contentBody_tbTitle').value;
     var errMessageTitle = '';
 
     // Check ID if blank and including symbols
     if (!title) {
         errMessageTitle = 'Title is empty!'
-    }/* else {
-        var reg = new RegExp(/[!"#$%&'()\*\+\-\/=?\[\\\]^_`{|}~]/g);
-        if (reg.test(userid)) {
-            errMessageTitle = 'Invalid Symbols() are used in Title'
-        }
-    }*/
+    }
 
     if (!errMessageTitle) {
         // No error
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('lbErrMessageTitle').innerText = errMessageTitle;
+        document.getElementById('contentBody_lbErrMessageTitle').innerText = errMessageTitle;
         return false;
     }
 };
 
 $(document).ready(function () {
     $('#buttonShowInputArea').click(function () {
-        alert('aaaaaa');
         const element = document.getElementById("inputArea");
         if (element.style.display == "block") {
             // noneで非表示

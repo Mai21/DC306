@@ -7,34 +7,34 @@
     <title>
         <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
     </title>
-    <link href="Styles/main.css" rel="stylesheet" />
-    <link href="Styles/login.css" rel="stylesheet" />
+    <link href="Styles/Css/main.css" rel="stylesheet" />
+    <link href="Styles/Css/login.css" rel="stylesheet" />
     <script src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.4.min.js" type="text/javascript"></script>
-	<script src="Validation.js" type="text/javascript"></script>
+	<script src="Styles/Javascript/Validation.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="wrapper">
-            <div class="menu">
-                <ul>
-                    <li class="navigation_first_item"> <a href="Default.aspx">Dashboard</a></li>
-                    <li> <a href="/TitleMaintenace.aspx">Title Maintenance</a></li>
-                    <li> <a href="/UserMaintenance.aspx">User Maintenance</a></li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-            <div class="content">
-                <asp:ContentPlaceHolder ID="contentBody" runat="server">
+    <nav class="font-sans bg-white text-center flex justify-between items-center my-4 mx-auto container overflow-hidden">
+    <div class="clear"></div>
 
+                <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
+                    <li> <a href="/DashboardSP.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Dashboard</a></li>
+                    <li> <a href="/TitleMaintenace.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Title Maintenance</a></li>
+                    <li> <a href="/UserMaintenance.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">User Maintenance</a></li>
+                </ul>
+    
+     </nav>   
+     <div class="content">
+                <asp:ContentPlaceHolder ID="contentBody" runat="server">
                 </asp:ContentPlaceHolder>
+    </div>
+     
+    <div class="clear"></div>
+    <footer class="font-sans bg-black text-white py-8 px-4">
+        <div class="mx-auto max-w-xl overflow-hidden flex justify-between items-center">
+                <p class="inline-block py-2 px-3 text-gray-700 text-xs items-center"> ©2019 Tuam Academy. All rights reserved.</p>
             </div>
-            <div class="clear"></div>
-            <div class="footer">
-                <h6>Copyright2019@TuamAcademy</h6>
-            </div>
-        </div>
-    </form>
-</body>
+    </footer>
+  </body>
 </html>

@@ -11,7 +11,7 @@ namespace ITS
 {
 
 
-    public partial class DashBoadSP
+    public partial class DashBoardSP
     {
 
         /// <summary>
