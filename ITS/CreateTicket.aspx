@@ -56,7 +56,7 @@
 
          <%-- This is the Button for Clear --%>
         <div class="flex items-center justify-between" style="float:right">
-            <asp:Button ID="btnClear" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click1"/>
+            <asp:Button ID="btnClear1" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click1"/>
         </div>
     </form>
 </asp:Content>
