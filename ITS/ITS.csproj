@@ -73,6 +73,7 @@
     <Content Include="Aboutus.aspx" />
     <Content Include="Archive.aspx" />
     <Content Include="ChangePassword.aspx" />
+    <Content Include="Styles\Javascript\A_title.js" />
     <Content Include="Styles\Javascript\Validation.js" />
     <Content Include="CreateTicket.aspx" />
     <Content Include="DashBoardSP.aspx" />
@@ -89,7 +90,7 @@
     <Content Include="Styles\Html\header.html" />
     <Content Include="Styles\Css\login.css" />
     <Content Include="TitleMaintenace.aspx" />
-    <Content Include="UserMaintenace.aspx.aspx" />
+    <Content Include="UserMaintenance.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +181,12 @@
     <Compile Include="TitleMaintenace.aspx.designer.cs">
       <DependentUpon>TitleMaintenace.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserMaintenace.aspx.aspx.cs">
-      <DependentUpon>UserMaintenace.aspx.aspx</DependentUpon>
+    <Compile Include="UserMaintenance.aspx.cs">
+      <DependentUpon>UserMaintenance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserMaintenace.aspx.aspx.designer.cs">
-      <DependentUpon>UserMaintenace.aspx.aspx</DependentUpon>
+    <Compile Include="UserMaintenance.aspx.designer.cs">
+      <DependentUpon>UserMaintenance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.ashx.cs">
       <DependentUpon>Users.ashx</DependentUpon>
