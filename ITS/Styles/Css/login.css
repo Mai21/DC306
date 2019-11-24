@@ -184,13 +184,72 @@ textarea:-ms-input-placeholder {
     max-width: 36rem;
 }
 
-.w-2\/5 {
-    width: 40%;
+.w-1\/2 {
+    width: 50%;
 }
 
 .w-1\/5 {
     width: 20%;
 }
+
+.w-2\/5 {
+    width: 40%;
+}
+
+.w-3\/5 {
+    width: 60%;
+}
+
+.w-4\/5 {
+    width: 80%;
+}
+
+
+.w-1\/12 {
+    width: 8.333333%;
+}
+
+.w-2\/12 {
+    width: 16.666667%;
+}
+
+.w-3\/12 {
+    width: 25%;
+}
+
+.w-4\/12 {
+    width: 33.333333%;
+}
+
+.w-5\/12 {
+    width: 41.666667%;
+}
+
+.w-6\/12 {
+    width: 50%;
+}
+
+.w-7\/12 {
+    width: 58.333333%;
+}
+
+.w-8\/12 {
+    width: 66.666667%;
+}
+
+.w-9\/12 {
+    width: 75%;
+}
+
+.w-10\/12 {
+    width: 83.333333%;
+}
+
+.w-11\/12 {
+    width: 91.666667%;
+}
+
+
 
 .w-10 {
     width: 2.5rem;
@@ -221,6 +280,11 @@ textarea:-ms-input-placeholder {
 }
 
 .mr-3 {
+    margin-right: 0.75rem;
+}
+
+.mx-3 {
+    margin-left: 0.75rem;
     margin-right: 0.75rem;
 }
 
@@ -333,6 +397,10 @@ textarea:-ms-input-placeholder {
 
 .hover\:bg-black:hover {
     background-color: #000;
+}
+
+.hover\:bg-gray-700:hover {
+    background-color: #4a5568;
 }
 
 .hover\:bg-gray-900:hover {
@@ -465,20 +533,16 @@ textarea:-ms-input-placeholder {
 }
 
 
-
-
-
-
-
-
-
-
+input:disabled {
+    background-color: #ccc;
+    pointer-events: none;
+}
 
 /* Title Maintenance */
 #inputArea {
-    display:none;
+    display: none;
 }
 
-#buttonShowInputArea {
+#btnShowInputArea {
     display: block;
 }

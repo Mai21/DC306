@@ -27,5 +27,11 @@ namespace ITS
             SOLVED = 3,
             SPECIAL = 4
         }
+
+        public enum TIERLEVEL 
+        { 
+            Tier1 = 0,
+            Tier2 = 1
+        }
     }
 }

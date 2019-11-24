@@ -9,28 +9,46 @@ using System.Data.SqlClient;
 namespace ITS
 {
     public partial class TitleMaintenace : System.Web.UI.Page
-    {
+    {        
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check the authority
-            System.Diagnostics.Debug.WriteLine((string)(Session["Authority"]));
+            // System.Diagnostics.Debug.WriteLine((string)(Session["Authority"]));
 
+            // out of authoriy not allowed to access
             if ((string)(Session["Authority"]) != "True")
             {
                 Response.Redirect("Login.aspx");
             }
 
-            rblTier.SelectedIndex = 0;
+            // reload
+            if (Request.QueryString["pm"] == "1")
+            {
+                lbErrMessageTitle.Text = "New Title was added!";
+            }
+            else if (Request.QueryString["pm"] == "2") 
+            {
+                lbErrMessageTitle.Text = "Update was successful!";
+            }
+
+            if (!IsPostBack) {
+                if (rblTier.SelectedIndex == -1)
+                {
+                    rblTier.SelectedIndex = 0;
+                }
+                /*else
+                {
+                    // button name 
+                    btnExecute.Text = "Update";
+                }*/
+            }
+
             tbTitle.Attributes.Add("placeholder", "Input a Title");
             tbTitle.Attributes.Add("maxlength", "100");
         }
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
-            // check update or insert 
-
-
-
             // check duplication
             // Connect SQL 
             using (SqlConnection con = new SqlConnection(Globals.connstr))
@@ -38,11 +56,12 @@ namespace ITS
                 SqlCommand cmd = new SqlCommand(
                     "SELECT name " +
                     "FROM titles " +
-                    "WHERE name = @name"
+                    "WHERE name = @name" + (btnExecute.Text != "Add"? " and id <> @id":"")
                     , con);
 
                 // Set a parameter
                 cmd.Parameters.AddWithValue("@name", tbTitle.Text.Trim());
+                cmd.Parameters.AddWithValue("@id", hdTitleId.Value.Trim());
                 try
                 {
                     con.Open();
@@ -57,7 +76,6 @@ namespace ITS
                             
                         }
                     }
-                    System.Diagnostics.Debug.WriteLine("Error1");
 
                     if (btnExecute.Text == "Add") {
                         cmd = new SqlCommand("" +
@@ -75,18 +93,33 @@ namespace ITS
                             "OUTPUT INSERTED.id " +
                             "WHERE id = @id", con);
                     }
-                    System.Diagnostics.Debug.WriteLine("Error2");
-                    System.Diagnostics.Debug.WriteLine(rblTier.SelectedIndex.ToString());
-                    System.Diagnostics.Debug.WriteLine((string)(Session["UserID"]));
 
+                    cmd.Parameters.AddWithValue("@id", hdTitleId.Value.Trim());
                     cmd.Parameters.AddWithValue("@name", tbTitle.Text.Trim());
                     cmd.Parameters.AddWithValue("@level", rblTier.SelectedIndex.ToString());
                     cmd.Parameters.AddWithValue("@currentUserName", (string)(Session["UserID"]));
 
                     if (cmd.ExecuteNonQuery() == 1)
                     {
-                        // Success
-                        // get id inserted and show the list
+                        //lbErrMessageTitle.Text = "New User is added!";
+                        Response.Redirect(Request.Url.OriginalString + "?pm=1");
+                    }
+                    
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        if (btnExecute.Text == "Add")
+                        {
+                            Response.Redirect(Request.QueryString["pm"] == null ?
+                            Request.Url.OriginalString + "?pm=1" :
+                            Request.Url.OriginalString.Substring(1, Request.Url.OriginalString.IndexOf("?")) + "?pm=1");
+                        }
+                        else 
+                        {
+                            Response.Redirect(Request.QueryString["pm"] == null ?
+                            Request.Url.OriginalString + "?pm=2" :
+                            Request.Url.OriginalString.Substring(1, Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
+                        }
+
                     }
                 }
                 catch (Exception ex)
