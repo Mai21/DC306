@@ -1,79 +1,100 @@
-﻿// validation
-function validationLogin() {
-    var userid = document.getElementById('contentBody_tbUserID').value;
-    var password = document.getElementById('contentBody_tbPassword').value;
-  
-    var errMessageUserID = '';
-    var errMessagePassword = '';
-    
-    // Check ID if blank and including symbols
-    if (!userid) {
-        errMessageUserID = 'UserID is empty!'
-    } else {
-        var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
-        if (reg.test(userid)) {
-            errMessageUserID = 'Symbols are not allowed in UserID'
-        }
+﻿var valUserId = function () {
+    var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
+    var userId = $("#contentBody_tbUserID").val();
+    var errMessage = '';
+    if (userId == '') {
+        errMessage = 'UserID is empty!'
     }
+    else if (reg.test(userId)) {
+        errMessage = 'Symbols are not allowed in UserID'
+    }
+    return errMessage;
+};
 
-    // Check ID if blank
-    if (!password) {
-        errMessagePassword = 'Password is empty!'
+var valEmail = function () {
+    var reg = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+    var email = $("#contentBody_tbEmail").val();
+    var errMessage = '';
+    if (email == '') {
+        errMessage = 'Email is empty!'
     }
+    else if (!reg.test(email)) {
+        errMessage = 'Email format is wrong!'
+    }
+    return errMessage;
+};
+
+
+var valPassword = function () {
+    var password = $("#contentBody_tbPassword").val();
+    var errMessage = '';
+    if (password == '') {
+        errMessage = 'Password is empty!'
+    }
+    return errMessage;
+};
+
+var valPasswordConfirm = function () {
+    var password = $("#contentBody_tbPassword").val();
+    var confirm = $("#contentBody_tbConfirm").val();
+    var errMessage = '';
+    if (confirm == '') {
+        errMessage = 'Confirm Password is empty!'
+    }else if (confirm != password) {
+        errMessage = 'Passsord and Confirm Password is not the same!'
+    }
+    return errMessage;
+};
+
+// validation
+function validationLogin() {
+    var errMessageUserID = valUserId();
+    var errMessagePassword = valPassword();
 
     if (!errMessageUserID && !errMessagePassword) {
         // No error
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('contentBody_lbErrMessageUserID').innerText = errMessageUserID;
-        document.getElementById('contentBody_lbErrMessagePassword').innerText = errMessagePassword;
+        $('#contentBody_lbErrMessageUserID').html(errMessageUserID);
+        $('#contentBody_lbErrMessagePassword').html(errMessagePassword);
         return false;
     }
 };
 
 function validationTitle() {
-    var title = document.getElementById('contentBody_tbTitle').value;
-    var errMessageTitle = '';
-    document.getElementById('contentBody_lbMessage').innerText = '';
+    var title = $('#contentBody_tbTitle').val();
+    var errMessage = '';
+    $('#contentBody_lbMessage').html('');
 
     // Check ID if blank and including symbols
     if (!title) {
-        errMessageTitle = 'Title is empty!'
+        errMessage = 'Title is empty!'
     }
 
-    if (!errMessageTitle) {
+    if (!errMessage) {
         // No error
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('contentBody_lbMessage').innerText = errMessageTitle;
+        $('#contentBody_lbMessage').html(errMessag);
         return false;
     }
 };
 
 function validationCW(){
-    if (!document.getElementById('contentBody_tbPassword').value) {
-        document.getElementById('contentBody_lbErrPassword').innerText = 'Password is empty!';
-        isErr = true;
-    }
+    var errMessagePassword = valPassword();
+    var errMessageConfirm = valPasswordConfirm();
 
-    if (!document.getElementById('contentBody_tbConfirm').value) {
-        document.getElementById('contentBody_lbErrConfirm').innerText = 'Password Comfirmation is empty!';
-        isErr = true;
-    } else {
-        if (document.getElementById('contentBody_tbPassword').value != document.getElementById('contentBody_tbConfirm').value) {
-            document.getElementById('contentBody_lbErrConfirm').innerText = 'Password and Password Comfirmation are different!';
-            isErr = true;
-        }
-    }
-
-    if (isErr == true) {
-        // Error, don't move to dashboard
-        document.getElementById('contentBody_lbMessage').innerText = 'Error occur!';
-        return false;
-    } else {
+    if (!errMessageConfirm && !errMessagePassword) {
+        // No error
         return true;
+    } else {
+        // Error, don't move to dashboard
+        $('#contentBody_lbErrConfirm').html(errMessageConfirm);
+        $('#contentBody_lbErrPassword').html(errMessagePassword);
+        $('#contentBody_lbMessage').html('Error occur!');
+        return false;
     }
 }
 
@@ -103,19 +124,16 @@ function editTitle(button, level){
 }
 
 function validationUser() {
+    clearLabel();
     var isErr = false;
     var regId = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
     var regName = new RegExp(/[!"#$%&'()\*\+,\/:;<=>?@\[\\\]^_`{|}~]/g);
 
     // Check if blank and including symbols
-    if (!document.getElementById('contentBody_tbUserID').value) {
-        document.getElementById('contentBody_lbErrUserID').innerText = 'UserID is empty!\n';
-        isErr = true;    
-    } else {
-        if (regId.test(document.getElementById('contentBody_tbUserID').value)) {
-            document.getElementById('contentBody_lbErrUserID').innerText = 'Symbols are not allowed in UserID';
-            isErr = true;    
-        }
+    var userIdErr = valUserId();
+    if (userIdErr) {
+        isErr = true;
+        $('#contentBody_lbErrUserID').html(userIdErr);
     }
 
     if (!document.getElementById('contentBody_tbFirstName').value) {
@@ -142,9 +160,14 @@ function validationUser() {
         document.getElementById('contentBody_lbErrEmail').innerText = 'Email is empty!';
         isErr = true;
     }
+    var emailErr = valEmail();
+    if (emailErr) {
+        isErr = true;
+        $('#contentBody_lbErrEmail').html(emailErr);
+    }
 
     // only when add
-    // disabled かどうか確認して、disabledのときには処理しない
+    // disabled 
     if (document.getElementById('contentBody_tbPassword').disabled == false) {
         if (!document.getElementById('contentBody_tbPassword').value) {
             document.getElementById('contentBody_lbErrPassword').innerText = 'Password is empty!';
@@ -174,8 +197,8 @@ function validationUser() {
 
 };
 
-function editUser(button) {
-
+function editUser(button, availavility,auth) {
+    clearLabel();
     // get index of items
     var obj_id = button.id;
     var index = obj_id.lastIndexOf('_');
@@ -196,7 +219,8 @@ function editUser(button) {
     document.getElementById('contentBody_tbLastName').value = edit_last_name;
     document.getElementById('contentBody_tbEmail').value = edit_e_mail;
     document.getElementById('contentBody_hfFlg').value = 'true';
-    //document.getElementById('contentBody_rblTier_' + level).checked = 'checked';
+    document.getElementById('contentBody_rblAvailability_' + availavility).checked = 'checked';
+    document.getElementById('contentBody_rblAuthority_' + auth).checked = 'checked';
     document.getElementById('contentBody_btnExecute').value = 'Update';
     document.getElementById('contentBody_lbMessage').innerHTML = '';
 
@@ -214,26 +238,9 @@ function editUser(button) {
 
 function clearUser()
 {
-    /*document.getElementById('contentBody_btnExecute').value = 'Add';
-    document.getElementById('contentBody_tbUserID').value = '';
-    document.getElementById('contentBody_tbFirstName').value = '';
-    document.getElementById('contentBody_tbLastName').value = '';
-    document.getElementById('contentBody_tbEmail').value = '';
-    document.getElementById('contentBody_tbPassword').value = '';
-    document.getElementById('contentBody_tbConfirm').value = '';
-    document.getElementById('contentBody_hdFlg').value = "false";
-
-    //document.getElementById('contentBody_rblTier_0').checked = 'checked';
-    document.getElementById('contentBody_lbMessage').innerHTML = '';
-    document.getElementById('contentBody_lbErrUserID').innerText = '';
-    document.getElementById('contentBody_lbErrLastName').innerText = '';
-    document.getElementById('contentBody_lbErrLastName').innerText = '';
-    document.getElementById('contentBody_lbErrEmail').innerText = '';
-    document.getElementById('contentBody_lbErrPassword').innerText = '';
-    document.getElementById('contentBody_lbErrConfirm').innerText = '';*/
-
+    
     clearInputInfo();
-
+    document.getElementById('contentBody_lbMessage').innerHTML = '';
     document.getElementById('contentBody_tbPassword').disabled = false;
     document.getElementById('contentBody_tbConfirm').disabled = false;
 }
@@ -259,6 +266,27 @@ function setUser(button) {
         return true;
     }
     
+}
+
+function setIssue(button) {
+
+    // get index of items
+    var obj_id = button.id;
+    var index = obj_id.lastIndexOf('_');
+    var obj_num = obj_id.substr(index + 1);
+
+    // get value of data
+    var issue_id = document.getElementById('contentBody_ListView1_idLabel_' + obj_num).innerHTML;
+
+    // set inputArea
+    if (!issue_id) {
+        document.getElementById('contentBody_lbMessage').innerHTML = 'System Error! Failed to Issue Detail Request.';
+        return false;
+    } else {
+        document.getElementById('contentBody_hfTargetId').value = issue_id;
+        return true;
+    }
+
 }
 
 $(document).ready(function () {
@@ -291,6 +319,12 @@ var clearInputInfo = function () {
         $(this).find('div.hf').children('input').val('');
         $("input[type='radio']").val(["0"]);
     });
+    $("#inputArea > span").each(function () {
+        $(this).html('');
+    });
+};
+
+var clearLabel = function () {
     $("#inputArea > span").each(function () {
         $(this).html('');
     });

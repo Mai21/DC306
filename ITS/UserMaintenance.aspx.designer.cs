@@ -51,15 +51,6 @@ namespace ITS
         protected global::System.Web.UI.WebControls.HiddenField hfTargetId;
 
         /// <summary>
-        /// tbUserID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbUserID;
-
-        /// <summary>
         /// lbErrUserID control.
         /// </summary>
         /// <remarks>
@@ -69,13 +60,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrUserID;
 
         /// <summary>
-        /// tbFirstName control.
+        /// tbUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFirstName;
+        protected global::System.Web.UI.WebControls.TextBox tbUserID;
 
         /// <summary>
         /// lbErrFirstName control.
@@ -87,13 +78,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrFirstName;
 
         /// <summary>
-        /// tbLastName control.
+        /// tbFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbLastName;
+        protected global::System.Web.UI.WebControls.TextBox tbFirstName;
 
         /// <summary>
         /// lbErrLastName control.
@@ -105,13 +96,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrLastName;
 
         /// <summary>
-        /// tbEmail control.
+        /// tbLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEmail;
+        protected global::System.Web.UI.WebControls.TextBox tbLastName;
 
         /// <summary>
         /// lbErrEmail control.
@@ -123,13 +114,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrEmail;
 
         /// <summary>
-        /// tbPassword control.
+        /// tbEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPassword;
+        protected global::System.Web.UI.WebControls.TextBox tbEmail;
 
         /// <summary>
         /// lbErrPassword control.
@@ -141,13 +132,13 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrPassword;
 
         /// <summary>
-        /// tbConfirm control.
+        /// tbPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbConfirm;
+        protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
         /// lbErrConfirm control.
@@ -159,6 +150,24 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbErrConfirm;
 
         /// <summary>
+        /// tbConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbConfirm;
+
+        /// <summary>
+        /// lbAvailability control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAvailability;
+
+        /// <summary>
         /// rblAvailability control.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,24 @@ namespace ITS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblAvailability;
+
+        /// <summary>
+        /// lbAuthority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAuthority;
+
+        /// <summary>
+        /// rblAuthority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblAuthority;
 
         /// <summary>
         /// btnExecute control.

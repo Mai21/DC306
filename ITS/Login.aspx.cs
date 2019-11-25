@@ -72,6 +72,13 @@ namespace ITS
                             bool correctPassword = BCrypt.Verify(tbPassword.Text.Trim(), rdr.GetValue(6).ToString());
                             if (correctPassword == true)
                             {
+                                if (isAdmin && rdr.GetValue(4).ToString() != "0")
+                                {
+                                    // Not Admin
+                                    lbErrMessageUserID.Text = "Student is not allowed to access Admin Page";
+                                    return;
+                                }
+
                                 Session["UserID"] = tbUserID.Text.Trim();
                                 Session["FirstName"] = rdr.GetValue(1).ToString();
                                 Session["LastName"] = rdr.GetValue(2).ToString();

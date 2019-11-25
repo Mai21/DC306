@@ -74,6 +74,7 @@
     <Content Include="Archive.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="images\306logo.png" />
+    <Content Include="IssueDetail.aspx" />
     <Content Include="Issues.aspx" />
     <Content Include="Styles\Javascript\A_initialize.js" />
     <Content Include="Styles\Javascript\Validation.js" />
@@ -147,6 +148,13 @@
       <DependentUpon>General.Master</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="IssueDetail.aspx.cs">
+      <DependentUpon>IssueDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssueDetail.aspx.designer.cs">
+      <DependentUpon>IssueDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Issues.aspx.cs">
       <DependentUpon>Issues.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,9 +212,6 @@
     <Compile Include="UserMaintenance.aspx.designer.cs">
       <DependentUpon>UserMaintenance.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users.ashx.cs">
-      <DependentUpon>Users.ashx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-social-webfont.eot" />
@@ -220,7 +225,6 @@
     <None Include="packages.config" />
     <Content Include="Admin.Master" />
     <Content Include="Student.Master" />
-    <Content Include="Users.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

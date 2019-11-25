@@ -26,7 +26,7 @@ namespace ITS
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
                 con.Open();
-                
+
                 try
                 {
                     // insert recovery request wtih title ID:1 
@@ -42,6 +42,7 @@ namespace ITS
                     if (cmd.ExecuteNonQuery() == 1)
                     {
                         lbMessage.Text = "The request was successful! \n Please wait for a contact from Technical Support";
+                        sendMail();
                         return;
                     }
                 }
@@ -53,7 +54,7 @@ namespace ITS
                     lbMessage.Text = "System Error!";
                     return;
                 }
-                
+
             }
 
 
@@ -78,47 +79,24 @@ namespace ITS
                 {
                     lbMessage.Text = "Password was reset!";
                 }
-            }
-            /* mail 
-             
+            }*/
+
+        }
+
+        private void sendMail()
+        {
+            //mail 
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("indigo.shadow.smiles@gmail.com");
+            mail.From = new MailAddress("tuamacademynz@gmail.com");
             mail.To.Add("pippuriric@gmail.com");
             mail.Subject = "This mail is send from asp.net application";
             mail.Body = "This is Email Body Text";
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("indigo.shadow.smiles@gmail.com", "kepwdtpzvylyqljj");
+            smtp.Credentials = new NetworkCredential("tuamacademynz@gmail.com", "cieynrdgygnjkdbo");
             smtp.Send(mail);
-
-            /*mail.To.Add("pippuriric@gmail.com");
-            mail.From = new MailAddress("indigo.shadow.smiles@gmail.com", "Email head", System.Text.Encoding.UTF8);
-            mail.Subject = "This mail is send from asp.net application";
-            mail.SubjectEncoding = System.Text.Encoding.UTF8;
-            mail.Body = "This is Email Body Text";
-            mail.BodyEncoding = System.Text.Encoding.UTF8;
-            mail.IsBodyHtml = true;
-            mail.Priority = MailPriority.High;
-            SmtpClient client = new SmtpClient();
-            client.Credentials = new NetworkCredential("indigo.shadow.smiles@gmail.com", "6720723mai");
-            client.Port = 587;
-            client.Host = "smtp.gmail.com";
-            client.EnableSsl = true;
-            try
-            {
-                client.Send(mail);
-            }
-            catch (Exception ex)
-            {
-                Exception ex2 = ex;
-                string errorMessage = string.Empty;
-                while (ex2 != null)
-                {
-                    errorMessage += ex2.ToString();
-                    ex2 = ex2.InnerException;
-                }
-            }*/
         }
     }
 }
+ 

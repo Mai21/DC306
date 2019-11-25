@@ -11,7 +11,7 @@ namespace ITS
 {
 
 
-    public partial class ChangePassword
+    public partial class IssueDetail
     {
 
         /// <summary>
@@ -24,6 +24,24 @@ namespace ITS
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lbId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbId;
+
+        /// <summary>
+        /// lbTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTitle;
+
+        /// <summary>
         /// lbMessage control.
         /// </summary>
         /// <remarks>
@@ -33,57 +51,75 @@ namespace ITS
         protected global::System.Web.UI.WebControls.Label lbMessage;
 
         /// <summary>
-        /// tbUserID control.
+        /// lbFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbUserID;
+        protected global::System.Web.UI.WebControls.Label lbFirstName;
 
         /// <summary>
-        /// lbErrPassword control.
+        /// lbLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrPassword;
+        protected global::System.Web.UI.WebControls.Label lbLastName;
 
         /// <summary>
-        /// tbPassword control.
+        /// lbUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPassword;
+        protected global::System.Web.UI.WebControls.Label lbUserID;
 
         /// <summary>
-        /// lbErrConfirm control.
+        /// lbLastUpdateDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrConfirm;
+        protected global::System.Web.UI.WebControls.Label lbLastUpdateDate;
 
         /// <summary>
-        /// tbConfirm control.
+        /// tbDescriptionOriginal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbConfirm;
+        protected global::System.Web.UI.WebControls.TextBox tbDescriptionOriginal;
 
         /// <summary>
-        /// btnChangePW control.
+        /// tbDescriptionAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnChangePW;
+        protected global::System.Web.UI.WebControls.TextBox tbDescriptionAdd;
+
+        /// <summary>
+        /// dlStatusList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlStatusList;
+
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }
