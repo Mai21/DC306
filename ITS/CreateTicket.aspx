@@ -23,8 +23,8 @@
         <%-- This is the DropdownList --%>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
             <asp:DropDownList ID="IssueList" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server">
-                <%-- asp:ListItem>I forgot my Student Portal Password.</asp:ListItem> 
-                <asp:ListItem>I forgot my Student Portal Username.</asp:ListItem
+              <asp:ListItem>I forgot my Student Portal Password.</asp:ListItem> 
+                <asp:ListItem>I forgot my Student Portal Username.</asp:ListItem>
                 <asp:ListItem>I cant connect to the Internet / WIFI</asp:ListItem>
                 <asp:ListItem>I cant print document / files.</asp:ListItem>
                 <asp:ListItem>I cant open my Laptop.</asp:ListItem>
@@ -34,7 +34,7 @@
                 <asp:ListItem>I want to change my Student Portal Password.</asp:ListItem>
                 <asp:ListItem>I cant view my Attendance Portal</asp:ListItem>
                 <asp:ListItem>I cant access social media sites</asp:ListItem>
-                <asp:ListItem>My issue is not on the lists/ Other Reasons.</asp:ListItem>--%>
+                <asp:ListItem>My issue is not on the lists/ Other Reasons.</asp:ListItem>
             </asp:DropDownList>
         </div>
 

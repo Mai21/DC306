@@ -2,22 +2,6 @@
 
 <script runat="server">
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        // logout
-        Session["AdminNew"] = null;
-        Response.Redirect("Login.aspx");
-    }
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void btnSearch_Click(object sender, EventArgs e)
-    {
-
-    }
 </script>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
