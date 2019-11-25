@@ -28,7 +28,7 @@ namespace ITS
             {
                 userType = "User ID";
                 isAdmin = true;
-                btnGoAdmin.Visible = false;
+                //btnGoAdmin.Visible = false;
             }
             tbUserID.Attributes.Add("placeholder", userType);
 
@@ -134,11 +134,6 @@ namespace ITS
                     // Go to System Error Page
                 }
             }
-        }
-
-        protected void btnGoAdmin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Request.Url.OriginalString + "?sp=ts");
         }
     }
 }

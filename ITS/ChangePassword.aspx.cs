@@ -13,86 +13,68 @@ namespace ITS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((string)(Session["Authority"]) != "True")
+            {
+                Response.Redirect("Login.aspx");
+            }
 
+            if ((string)(Session["TargetUserID"]) == "") {
+                // error, go back to UserMaintenance
+                Response.Redirect("UserMaintenance.aspx");
+            }
+            tbUserID.Text = (string)(Session["TargetUserID"]);
+            tbPassword.Attributes.Add("placeholder", "Input Password");
+            tbConfirm.Attributes.Add("placeholder", "Input Confirm Password");
+            tbPassword.Attributes.Add("maxlength", "8");
+            tbConfirm.Attributes.Add("maxlength", "8");
+            tbPassword.Attributes["type"] = "password";
+            tbConfirm.Attributes["type"] = "password";
         }
 
-        protected void btnChange_Click(object sender, EventArgs e)
+        protected void btnChangePW_Click(object sender, EventArgs e)
         {
             /* change password*/
-            string targetUserId = "";
+            // string targetUserId = "";
             // admin or not
-            if ((string)(Session["Authority"]) == "True")
-            {
-                targetUserId = (string)(Session["TargetUserID"]);
-            }
-            else 
-            {
-                targetUserId = (string)(Session["UserID"]);
-            }
-
-
+            //if ((string)(Session["Authority"]) == "True")
+            //{
+            //    targetUserId = (string)(Session["TargetUserID"]);
+            //}
+            //else 
+            //{
+            //    targetUserId = (string)(Session["UserID"]);
             
-
-            using (SqlConnection con = new SqlConnection(Globals.connstr))
+            try
             {
-                SqlCommand cmd = new SqlCommand(
-                    "SELECT id, password " +
-                    "FROM users " +
-                    "WHERE id = @userId"
-                    , con);
-
-                // Set a parameter
-                cmd.Parameters.AddWithValue("@userId", targetUserId);
-                try
+                using (SqlConnection con = new SqlConnection(Globals.connstr))
                 {
+                    SqlCommand cmd = new SqlCommand("" +
+                        "UPDATE users SET password = @password, updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
+                        "WHERE id = @userId ", con);
+
+                    cmd.Parameters.AddWithValue("@userId", tbUserID.Text.Trim());
+                    cmd.Parameters.AddWithValue("@password", BCrypt.HashPassword(tbPassword.Text.Trim(), BCrypt.GenerateSalt()));
+                    cmd.Parameters.AddWithValue("@activeUser", "admin");
+
                     con.Open();
-                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    if (cmd.ExecuteNonQuery() != 1)
                     {
-                        if (rdr.Read())
-                        {
-                            // check password
-                            bool correctPassword = BCrypt.Verify(txtCurrentPassword.Text.Trim(), rdr.GetValue(1).ToString());
-                            if (correctPassword != true)
-                            {
-                                lbErrMessageCurrentPassword.Text = "Current Password is wrong";
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            // No employee Id exists
-                            lbMessage.Text = "Session Error";
-                            return;
-                        }
+                        lbMessage.Text = "Changing password was failed!";
+                        return;
+                    }
+                    else 
+                    {
+                        lbMessage.Text = "Password was changed!";
                     }
                 }
-                catch (Exception ex)
-                {
-                    // System Error
-                    Console.WriteLine(ex.Message);
-                    lbMessage.Text = "System Error!";
-                    return;
-                }
-
-
-
             }
-
-            using (SqlConnection con = new SqlConnection(Globals.connstr))
+            catch (Exception ex)
             {
-                SqlCommand cmd = new SqlCommand("" +
-                    "UPDATE users SET password = @password, updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
-                    "WHERE id = @userId ", con);
-
-                cmd.Parameters.AddWithValue("@userId", targetUserId);
-                cmd.Parameters.AddWithValue("@password", BCrypt.HashPassword(txtPassword.Text.Trim(), BCrypt.GenerateSalt()));
-                cmd.Parameters.AddWithValue("@activeUser", "admin");
-
-                con.Open();
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    lbMessage.Text = "Password was reset!";
-                }
+                // System Error
+                Console.WriteLine(ex.Message);
+                // Move to an Error page
+                lbMessage.Text = "System Error!";
+                return;
             }
         }
     }

@@ -35,14 +35,13 @@ namespace ITS
                         "user_id, title_id, description, status, " +
                         "created_user, created_date, updated_user, updated_date) " +
                         "values(@userId, 1, 'Password RecoveryRequest',1," +
-                        "@activeUser,CURRENT_TIMESTAMP,@activeUser,CURRENT_TIMESTAMP)", con);
+                        "@userId,CURRENT_TIMESTAMP,@userId,CURRENT_TIMESTAMP)", con);
 
                     cmd.Parameters.AddWithValue("@userId", tbUserID.Text);
-                    cmd.Parameters.AddWithValue("@activeUser", "admin");
 
                     if (cmd.ExecuteNonQuery() == 1)
                     {
-                        lbMessage.Text = "The request was successful! Please wait for a contact from Technical Support";
+                        lbMessage.Text = "The request was successful! \n Please wait for a contact from Technical Support";
                         return;
                     }
                 }
