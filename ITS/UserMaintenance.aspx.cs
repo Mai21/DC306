@@ -59,6 +59,9 @@ namespace ITS
             tbPassword.Attributes.Add("maxlength", "8");
             tbConfirm.Attributes.Add("maxlength", "8");
 
+            tbPassword.Attributes["type"] = "password";
+            tbConfirm.Attributes["type"] = "password";
+
         }
 
         protected void btnExecute_Click(object sender, EventArgs e)
@@ -226,9 +229,10 @@ namespace ITS
 
         }
 
-        public void PasswordChange() {
-            // Change PassWord
-
+        protected void btnChangePW_Click(object sender, EventArgs e)
+        {
+            Session["TargetUserID"] = hfTargetId.Value.Trim();
+            Response.Redirect("ChangePassword.aspx");
         }
     }
 }

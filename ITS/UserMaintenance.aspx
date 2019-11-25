@@ -2,18 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <script src="Styles/Javascript/A_initialize.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
     <form id="form1" runat="server" class="font-sans text-sm rounded w-full mx-auto"> 
         <h2>User Maintenance</h2>
             <section class="bg-white py-4 my-8 px-8 pt-6 pb-8 w-1/2">
                 <div class="container py-2 px-4">
+                    <div>
+			            <asp:Label ID="lbMessage" class="text-red" runat="server" Text=""></asp:Label>
+		            </div>
                     <div id="inputArea" class="container py-2 px-4">
                         <div>
-			                <asp:Label ID="lbMessage" class="text-red" runat="server" Text=""></asp:Label>
-		                </div>
-                        <div>
                             <div class="hf"><asp:HiddenField ID="hfFlg" runat="server" /></div>
+                            <div class="hf"><asp:HiddenField ID="hfTargetId" runat="server" /></div>
 		                </div>
 		                <div class="relative border rounded mb-4 shadow appearance-none flex">
 			                <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
@@ -64,8 +66,8 @@
                             <asp:Label ID="authorization_level_idLabel" class="w-1/12 px-3" runat="server" Text='<%# Eval("authorization_level_id") %>' />
                             <asp:Label ID="availabilityLabel" runat="server" class="w-1/12 px-3" Text='<%# Eval("availability") %>' />
                             <div class="w-2/12 flex items-center">
-                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick='<%# "return editUser(this)"%>'/>
-                                <asp:Button ID="btnDelete" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="ChangePW" OnClientClick='<%# "return editUser(this)"%>'/> 
+                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick='return editUser(this);'/>
+                                <asp:Button ID="btnChangePW" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="ChangePW" OnClientClick="return setUser(this);" OnClick="btnChangePW_Click" /> 
                             </div>                        
                         </li>
                     </AlternatingItemTemplate>
@@ -84,8 +86,8 @@
                             <asp:Label ID="authorization_level_idLabel" class="w-1/12 px-3" runat="server" Text='<%# Eval("authorization_level_id") %>' />
                             <asp:Label ID="availabilityLabel" runat="server" class="w-1/12 px-3" Text='<%# Eval("availability") %>' />                       
                             <div class="w-2/12 flex items-center">
-                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick='<%# "return editUser(this)"%>'/>
-                                <asp:Button ID="btnDelete" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="ChangePW" OnClientClick='<%# "return editUser(this)"%>'/> 
+                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick="return editUser(this);"/>
+                                <asp:Button ID="btnChangePW" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="ChangePW" OnClientClick="return setUser(this);" OnClick="btnChangePW_Click" /> 
                             </div>
                         </li>
                     </ItemTemplate>

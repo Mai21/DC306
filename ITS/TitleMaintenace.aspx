@@ -2,17 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-    <script src="Styles/Javascript/A_title.js" type="text/javascript"></script>
+    <script src="Styles/Javascript/A_initialize.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
     <form id="form1" runat="server" class="font-sans text-sm rounded w-full mx-auto"> 
         <h2>Title Maintenance</h2>
         <section class="bg-white py-4 my-8 px-8 pt-6 pb-8 w-1/2">
             <div id="extra" class="container ">
+                <div>
+			        <asp:Label ID="lbMessage" class="text-red lb" runat="server" Text=""></asp:Label>
+		        </div>
                 <div id="inputArea" class="container py-2 px-4">
-                    <div>
-			            <asp:Label ID="lbMessage" class="text-red lb" runat="server" Text=""></asp:Label>
-		            </div>
                     <div>
                         <div class="hf"><asp:HiddenField ID="hfTitleId" runat="server" /></div>
 		            </div>

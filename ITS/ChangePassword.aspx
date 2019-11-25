@@ -2,49 +2,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-    <div id="extra" class="container">
-        <h2>Please enter your current password and your new password below.</h2>
-        <table id="table1">
-	        <tr>
-	            <td colspan="3" class="side-title">
-                    <asp:Label ID="lbMessage" runat="server" Text=""></asp:Label>
-                </td>
-	        </tr>
-            <tr>
-	            <td class="side-title">
-                    <asp:Label ID="lbCurrentPassword" runat="server" Text="CurrentPassword:"></asp:Label>
-                    </td>
-	            <td>
-                    <asp:TextBox ID="txtCurrentPassword" runat="server"></asp:TextBox>
-                </td>
-	            <td><asp:Label ID="lbErrMessageCurrentPassword" runat="server" Text=""></asp:Label></td>
-	        </tr>
-	        <tr>
-	            <td class="side-title">
-                    <asp:Label ID="lbPassword" runat="server" Text="New Password:"></asp:Label>
-                    </td>
-	            <td>
-                    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
-                </td>
-	            <td><asp:Label ID="lbErrMessagePassword" runat="server" Text=""></asp:Label></td>
-	        </tr>
-            <tr>
-	            <td class="side-title">
-                    <asp:Label ID="lbPasswordComfirm" runat="server" Text="New Password comfirmation:"></asp:Label>
-                    </td>
-	            <td>
-                    <asp:TextBox ID="txtConfirm" runat="server"></asp:TextBox>
-                </td>
-	            <td><asp:Label ID="lbErrMessageConfirm" runat="server" Text=""></asp:Label></td>
-	        </tr>
-           
-	        <tr>
-	            <td class="auto-style2"></td>
-	            <td class="auto-style3"></td>
-	            <td>
-                    <asp:Button ID="btnChange" runat="server" Text="Change Password" accesskey="2" OnClick="btnChange_Click" />
-                </td>
-	        </tr>
-        </table>
-    </div>
+    <form id="form1" runat="server" class="font-sans text-sm rounded max-w-md mx-auto my-8 px-8 pt-6 pb-8 w-1/2"> 
+		<h2>Please enter a new password below.</h2>
+        <section class="bg-white">
+            <div class="container py-2 px-4">
+                <div>
+			        <asp:Label ID="lbMessage" class="text-red" runat="server" Text=""></asp:Label>
+		        </div>
+		        <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+			        <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" disabled="disabled" runat="server"></asp:TextBox>
+		        </div>
+		        <div class="relative border rounded mb-4 shadow appearance-none label-floating"> 
+			        <asp:TextBox ID="tbPassword" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="1"></asp:TextBox>
+		        </div>
+                <asp:Label ID="lbErrPassword" class="text-red" runat="server" Text=""></asp:Label>
+                <div class="relative border rounded mb-4 shadow appearance-none label-floating"> 
+			        <asp:TextBox ID="tbConfirm" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="2"></asp:TextBox>
+		        </div>
+                <asp:Label ID="lbErrConfirm" class="text-red" runat="server" Text=""></asp:Label>
+		        <div class="flex items-center justify-between">
+			        <asp:Button ID="btnChangePW" class="bg-black hover:bg-gray-700 text-white py-2 px-4" runat="server" Text="Change Passoword" accesskey="3" OnClientClick="return validationCW();"  OnClick="btnChangePW_Click"/>
+		        </div>
+            </div>
+        </section>
+    </form>
 </asp:Content>

@@ -75,7 +75,7 @@
     <Content Include="ChangePassword.aspx" />
     <Content Include="images\306logo.png" />
     <Content Include="Issues.aspx" />
-    <Content Include="Styles\Javascript\A_title.js" />
+    <Content Include="Styles\Javascript\A_initialize.js" />
     <Content Include="Styles\Javascript\Validation.js" />
     <Content Include="CreateTicket.aspx" />
     <Content Include="DashBoardSP.aspx" />
@@ -138,6 +138,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="General.Master.cs">
+      <DependentUpon>General.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="General.Master.designer.cs">
+      <DependentUpon>General.Master</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Issues.aspx.cs">
@@ -209,6 +216,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="General.Master" />
     <None Include="packages.config" />
     <Content Include="Admin.Master" />
     <Content Include="Student.Master" />

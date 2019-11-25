@@ -1,7 +1,7 @@
 ﻿// validation
 function validationLogin() {
-    var userid = document.getElementById('tbUserID').value;
-    var password = document.getElementById('tbPassword').value;
+    var userid = document.getElementById('contentBody_tbUserID').value;
+    var password = document.getElementById('contentBody_tbPassword').value;
   
     var errMessageUserID = '';
     var errMessagePassword = '';
@@ -26,8 +26,8 @@ function validationLogin() {
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('lbErrMessageUserID').innerText = errMessageUserID;
-        document.getElementById('lbErrMessagePassword').innerText = errMessagePassword;
+        document.getElementById('contentBody_lbErrMessageUserID').innerText = errMessageUserID;
+        document.getElementById('contentBody_lbErrMessagePassword').innerText = errMessagePassword;
         return false;
     }
 };
@@ -44,7 +44,6 @@ function validationTitle() {
 
     if (!errMessageTitle) {
         // No error
-        alert(document.getElementById('contentBody_btnExecute').value);
         return true;
     } else {
         // Error, don't move to dashboard
@@ -52,6 +51,31 @@ function validationTitle() {
         return false;
     }
 };
+
+function validationCW(){
+    if (!document.getElementById('contentBody_tbPassword').value) {
+        document.getElementById('contentBody_lbErrPassword').innerText = 'Password is empty!';
+        isErr = true;
+    }
+
+    if (!document.getElementById('contentBody_tbConfirm').value) {
+        document.getElementById('contentBody_lbErrConfirm').innerText = 'Password Comfirmation is empty!';
+        isErr = true;
+    } else {
+        if (document.getElementById('contentBody_tbPassword').value != document.getElementById('contentBody_tbConfirm').value) {
+            document.getElementById('contentBody_lbErrConfirm').innerText = 'Password and Password Comfirmation are different!';
+            isErr = true;
+        }
+    }
+
+    if (isErr == true) {
+        // Error, don't move to dashboard
+        document.getElementById('contentBody_lbMessage').innerText = 'Error occur!';
+        return false;
+    } else {
+        return true;
+    }
+}
 
 function editTitle(button, level){
 
@@ -214,16 +238,30 @@ function clearUser()
     document.getElementById('contentBody_tbConfirm').disabled = false;
 }
 
-$(document).ready(function () {
-    // if it's reload, inputArea should open  
-    if (document.getElementById('contentBody_lbMessage').innerText != '') {
-        //if (!$('#contentBody_lbErrMessageTitle').innerText) {
-        //$('#inputArea').display('block');
-        document.getElementById('inputArea').style.display = 'block';
-        //$('#btnShowInputArea').display('none');
-        document.getElementById('btnShowInputArea').style.display = 'none';
-    }
 
+function setUser(button) {
+
+    // get index of items
+    var obj_id = button.id;
+    var index = obj_id.lastIndexOf('_');
+    var obj_num = obj_id.substr(index + 1);
+
+    // get value of data
+    var user_id = document.getElementById('contentBody_ListView1_idLabel_' + obj_num).innerHTML;
+ 
+    // set inputArea
+    if (!user_id) {
+        document.getElementById('contentBody_lbMessage').innerHTML = 'System Error! Failed to Password Change Request.';
+        return false;
+    } else
+    {
+        document.getElementById('contentBody_hfTargetId').value = user_id;
+        return true;
+    }
+    
+}
+
+$(document).ready(function () {
     $('#btnShowInputArea').click(function () {
         const element = document.getElementById('inputArea');
         if (element.style.display == 'block') {
@@ -259,7 +297,7 @@ var clearInputInfo = function () {
 };
 
 function validationRecover() {
-    var userid = document.getElementById('tbUserID').value;
+    var userid = document.getElementById('contentBody_tbUserID').value;
 
     var errMessageUserID = '';
 
@@ -278,7 +316,7 @@ function validationRecover() {
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('lbMessage').innerText = errMessageUserID;
+        document.getElementById('contentBody_lbMessage').innerText = errMessageUserID;
         return false;
     }
 };
