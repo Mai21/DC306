@@ -73,7 +73,6 @@
     <Content Include="Aboutus.aspx" />
     <Content Include="Archive.aspx" />
     <Content Include="ChangePassword.aspx" />
-    <Content Include="Styles\Javascript\A_title.js" />
     <Content Include="images\306logo.png" />
     <Content Include="Issues.aspx" />
     <Content Include="Styles\Javascript\A_initialize.js" />
