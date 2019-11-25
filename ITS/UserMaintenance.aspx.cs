@@ -25,22 +25,12 @@ namespace ITS
             // reload
             if (Request.QueryString["pm"] == "1")
             {
-                lbErrMessage.Text = "New User was added!";
+                lbMessage.Text = "New User was added!";
             }
             else if (Request.QueryString["pm"] == "2")
             {
-                lbErrMessage.Text = "Update was successful!";
+                lbMessage.Text = "Update was successful!";
             }
-
-            // if nothing selected, tier 1 is selected
-            /*if (rblAvailability.SelectedIndex == -1)
-            {
-                rblAvailability.SelectedIndex = 0;
-            }
-            else
-            {
-                btnExecute.Text = "Update";
-            }*/
 
             if (!IsPostBack)
             {
@@ -48,11 +38,11 @@ namespace ITS
                 {
                     rblAvailability.SelectedIndex = 0;
                 }
-                /*else
+                else
                 {
                     // button name 
                     btnExecute.Text = "Update";
-                }*/
+                }
             }
 
             tbUserID.Attributes.Add("placeholder", "Input UserID eg.190001CH");
@@ -73,12 +63,18 @@ namespace ITS
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
-            lbErrMessage.Text = "";
+            bool isAdd = true;
+            if (hfFlg.Value.Trim() ==  "false")
+            {
+                isAdd = false;
+            }
+
+                lbMessage.Text = "";
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
                 con.Open();
                 // Check ID
-                if (btnExecute.Text == "Add")
+                if (isAdd)
                 {
                     SqlCommand cmd1 = new SqlCommand(
                         "SELECT * " +
@@ -102,7 +98,7 @@ namespace ITS
                             if (rdr.HasRows)
                             {
                                 // Existing
-                                lbErrMessage.Text = "This UserID is already existing.";
+                                lbMessage.Text = "This UserID is already existing.";
                             }
                         }
                         using (SqlDataReader rdr = cmd2.ExecuteReader())
@@ -110,11 +106,11 @@ namespace ITS
                             if (rdr.HasRows)
                             {
                                 // Existing
-                                lbErrMessage.Text = lbErrMessage.Text.Length > 0? lbErrMessage.Text + "\nThis Email is already registered.": "This Email is already registered.";
+                                lbMessage.Text = lbMessage.Text.Length > 0? lbMessage.Text + "\nThis Email is already registered.": "This Email is already registered.";
                             }
                         }
 
-                        if (lbErrMessage.Text.Length > 0) {
+                        if (lbMessage.Text.Length > 0) {
                             return;
                         }
 
@@ -139,17 +135,17 @@ namespace ITS
 
                         if (cmd.ExecuteNonQuery() == 1)
                         {
-                            if (btnExecute.Text == "Add")
+                            if (isAdd)
                             {
                                 Response.Redirect(Request.QueryString["pm"] == null ?
                                 Request.Url.OriginalString + "?pm=1" :
-                                Request.Url.OriginalString.Substring(1, Request.Url.OriginalString.IndexOf("?")) + "?pm=1");
+                                Request.Url.OriginalString.Substring(0, Request.Url.OriginalString.IndexOf("?")) + "?pm=1");
                             }
                             else
                             {
                                 Response.Redirect(Request.QueryString["pm"] == null ?
                                 Request.Url.OriginalString + "?pm=2" :
-                                Request.Url.OriginalString.Substring(1, Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
+                                Request.Url.OriginalString.Substring(0, Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
                             }
 
                         }
@@ -159,7 +155,7 @@ namespace ITS
                         // System Error
                         Console.WriteLine(ex.Message);
                         // Move to an Error page
-                        lbErrMessage.Text = "System Error!";
+                        lbMessage.Text = "System Error!";
                         return;
                     }
                 }
@@ -180,7 +176,7 @@ namespace ITS
                             if (rdr.HasRows)
                             {
                                 // Existing
-                                lbErrMessage.Text = "This Email is already registered.";
+                                lbMessage.Text = "This Email is already registered.";
                                 System.Diagnostics.Debug.WriteLine("here7");
                                 return;
                             }
@@ -206,7 +202,7 @@ namespace ITS
                         {
                             Response.Redirect(Request.QueryString["pm"] == "" ? 
                                 Request.Url.OriginalString + "?pm=2" : 
-                                Request.Url.OriginalString.Substring(1,Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
+                                Request.Url.OriginalString.Substring(0,Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
                             System.Diagnostics.Debug.WriteLine("here10");
                         }
 
@@ -217,7 +213,7 @@ namespace ITS
                         // System Error
                         Console.WriteLine(ex.Message);
                         // Move to an Error page
-                        lbErrMessage.Text = "System Error!";
+                        lbMessage.Text = "System Error!";
                         return;
                     }
                 }
@@ -227,6 +223,11 @@ namespace ITS
 
         protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        public void PasswordChange() {
+            // Change PassWord
 
         }
     }

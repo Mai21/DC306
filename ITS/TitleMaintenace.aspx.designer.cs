@@ -24,22 +24,22 @@ namespace ITS
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lbErrMessageTitle control.
+        /// lbMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrMessageTitle;
+        protected global::System.Web.UI.WebControls.Label lbMessage;
 
         /// <summary>
-        /// hdTitleId control.
+        /// hfTitleId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdTitleId;
+        protected global::System.Web.UI.WebControls.HiddenField hfTitleId;
 
         /// <summary>
         /// tbTitle control.

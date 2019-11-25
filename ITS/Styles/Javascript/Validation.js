@@ -35,7 +35,7 @@ function validationLogin() {
 function validationTitle() {
     var title = document.getElementById('contentBody_tbTitle').value;
     var errMessageTitle = '';
-    document.getElementById('contentBody_lbErrMessageTitle').innerText = '';
+    document.getElementById('contentBody_lbMessage').innerText = '';
 
     // Check ID if blank and including symbols
     if (!title) {
@@ -44,12 +44,11 @@ function validationTitle() {
 
     if (!errMessageTitle) {
         // No error
-        alert('true');
+        alert(document.getElementById('contentBody_btnExecute').value);
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('contentBody_lbErrMessageTitle').innerText = errMessageTitle;
-        alert('false');
+        document.getElementById('contentBody_lbMessage').innerText = errMessageTitle;
         return false;
     }
 };
@@ -67,11 +66,11 @@ function editTitle(button, level){
     //var edit_tier_num = document.getElementById('contentBody_ListView1_tier_levelLabel_' + obj_num).innerHTML;
 
     // set inputArea
-    document.getElementById('contentBody_hdTitleId').value = edit_title_id;
+    document.getElementById('contentBody_hfTitleId').value = edit_title_id;
     document.getElementById('contentBody_tbTitle').value = edit_title;
     document.getElementById('contentBody_rblTier_' + level).checked = 'checked';
     document.getElementById('contentBody_btnExecute').value = 'Update';
-    document.getElementById('contentBody_lbErrMessageTitle').innerHTML = '';
+    document.getElementById('contentBody_lbMessage').innerHTML = '';
 
     document.getElementById('inputArea').style.display = 'block';
     document.getElementById('btnShowInputArea').style.display = 'none';
@@ -141,7 +140,7 @@ function validationUser() {
     
     if (isErr == true) {
         // Error, don't move to dashboard
-        document.getElementById('contentBody_lbErrMessage').innerText = 'Error occur!';
+        document.getElementById('contentBody_lbMessage').innerText = 'Error occur!';
         return false;
     } else {
         return true;
@@ -163,6 +162,7 @@ function editUser(button) {
     var edit_first_name = document.getElementById('contentBody_ListView1_first_nameLabel_' + obj_num).innerHTML;
     var edit_last_name = document.getElementById('contentBody_ListView1_last_nameLabel_' + obj_num).innerHTML;
     var edit_e_mail = document.getElementById('contentBody_ListView1_e_mailLabel_' + obj_num).innerHTML;
+
     
     //var edit_tier_num = document.getElementById('contentBody_ListView1_tier_levelLabel_' + obj_num).innerHTML;
 
@@ -171,12 +171,18 @@ function editUser(button) {
     document.getElementById('contentBody_tbFirstName').value = edit_first_name;
     document.getElementById('contentBody_tbLastName').value = edit_last_name;
     document.getElementById('contentBody_tbEmail').value = edit_e_mail;
+    document.getElementById('contentBody_hfFlg').value = 'true';
     //document.getElementById('contentBody_rblTier_' + level).checked = 'checked';
     document.getElementById('contentBody_btnExecute').value = 'Update';
-    document.getElementById('contentBody_lbErrMessage').innerHTML = '';
+    document.getElementById('contentBody_lbMessage').innerHTML = '';
 
     document.getElementById('contentBody_tbPassword').disabled = true;
     document.getElementById('contentBody_tbConfirm').disabled = true;
+
+    document.getElementById('inputArea').style.display = 'block';
+    document.getElementById('btnShowInputArea').style.display = 'none';
+
+    $("#inputArea").get(0).scrollIntoView(true);
 
     return false;
 }
@@ -184,23 +190,95 @@ function editUser(button) {
 
 function clearUser()
 {
-    document.getElementById('contentBody_btnExecute').value = 'Add';
+    /*document.getElementById('contentBody_btnExecute').value = 'Add';
     document.getElementById('contentBody_tbUserID').value = '';
     document.getElementById('contentBody_tbFirstName').value = '';
     document.getElementById('contentBody_tbLastName').value = '';
     document.getElementById('contentBody_tbEmail').value = '';
     document.getElementById('contentBody_tbPassword').value = '';
     document.getElementById('contentBody_tbConfirm').value = '';
+    document.getElementById('contentBody_hdFlg').value = "false";
 
     //document.getElementById('contentBody_rblTier_0').checked = 'checked';
-    document.getElementById('contentBody_lbErrMessage').innerHTML = '';
+    document.getElementById('contentBody_lbMessage').innerHTML = '';
     document.getElementById('contentBody_lbErrUserID').innerText = '';
     document.getElementById('contentBody_lbErrLastName').innerText = '';
     document.getElementById('contentBody_lbErrLastName').innerText = '';
     document.getElementById('contentBody_lbErrEmail').innerText = '';
     document.getElementById('contentBody_lbErrPassword').innerText = '';
-    document.getElementById('contentBody_lbErrConfirm').innerText = '';
+    document.getElementById('contentBody_lbErrConfirm').innerText = '';*/
+
+    clearInputInfo();
 
     document.getElementById('contentBody_tbPassword').disabled = false;
     document.getElementById('contentBody_tbConfirm').disabled = false;
 }
+
+$(document).ready(function () {
+    // if it's reload, inputArea should open  
+    if (document.getElementById('contentBody_lbMessage').innerText != '') {
+        //if (!$('#contentBody_lbErrMessageTitle').innerText) {
+        //$('#inputArea').display('block');
+        document.getElementById('inputArea').style.display = 'block';
+        //$('#btnShowInputArea').display('none');
+        document.getElementById('btnShowInputArea').style.display = 'none';
+    }
+
+    $('#btnShowInputArea').click(function () {
+        const element = document.getElementById('inputArea');
+        if (element.style.display == 'block') {
+            // noneで非表示
+            element.style.display = 'none';
+            document.getElementById('btnShowInputArea').style.display = 'block';
+        } else {
+            // blockで表示
+            element.style.display = 'block';
+            document.getElementById('btnShowInputArea').style.display = 'none';
+        }
+    });
+
+    $('#btnClear').click(function () {
+        clearInputInfo();
+        //document.getElementById('contentBody_btnExecute').value = 'Add';
+        //document.getElementById('contentBody_tbTitle').value = '';
+        //document.getElementById('contentBody_rblTier_0').checked = 'checked';
+        //document.getElementById('contentBody_lbErrMessageTitle').innerHTML = '';
+    });
+});
+
+var clearInputInfo = function () {
+    $("#inputArea > div").each(function () {
+        //$(this).find('span.lb').html('');
+        $(this).find('input.tb').val('');
+        $(this).find('div.hf').children('input').val('');
+        $("input[type='radio']").val(["0"]);
+    });
+    $("#inputArea > span").each(function () {
+        $(this).html('');
+    });
+};
+
+function validationRecover() {
+    var userid = document.getElementById('tbUserID').value;
+
+    var errMessageUserID = '';
+
+    // Check ID if blank and including symbols
+    if (!userid) {
+        errMessageUserID = 'UserID is empty!'
+    } else {
+        var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
+        if (reg.test(userid)) {
+            errMessageUserID = 'Symbols are not allowed in UserID'
+        }
+    }
+
+    if (!errMessageUserID) {
+        // No error
+        return true;
+    } else {
+        // Error, don't move to dashboard
+        document.getElementById('lbMessage').innerText = errMessageUserID;
+        return false;
+    }
+};
