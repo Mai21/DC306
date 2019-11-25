@@ -15,16 +15,56 @@ namespace ITS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            tbUserID.Attributes.Add("placeholder", "Input UserID eg.190001CH");
+            tbUserID.Attributes.Add("maxlength", "8");
 
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            // Register as a new issue
+            using (SqlConnection con = new SqlConnection(Globals.connstr))
+            {
+                con.Open();
+                
+                try
+                {
+                    // insert recovery request wtih title ID:1 
+                    SqlCommand cmd = new SqlCommand("" +
+                        "Insert into issues(" +
+                        "user_id, title_id, description, status, " +
+                        "created_user, created_date, updated_user, updated_date) " +
+                        "values(@userId, 1, 'Password RecoveryRequest',1," +
+                        "@activeUser,CURRENT_TIMESTAMP,@activeUser,CURRENT_TIMESTAMP)", con);
+
+                    cmd.Parameters.AddWithValue("@userId", tbUserID.Text);
+                    cmd.Parameters.AddWithValue("@activeUser", "admin");
+
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        lbMessage.Text = "The request was successful! Please wait for a contact from Technical Support";
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // System Error
+                    Console.WriteLine(ex.Message);
+                    // Move to an Error page
+                    lbMessage.Text = "System Error!";
+                    return;
+                }
+                
+            }
+
+
+
+
             /* Check the existance of email */
 
-            
+
             /* Reset Password */
-            using (SqlConnection con = new SqlConnection(Globals.connstr))
+            /*using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
                 SqlCommand cmd = new SqlCommand("" +
                     "UPDATE users SET password = @password, updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
@@ -37,12 +77,11 @@ namespace ITS
                 con.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    lbErrMessage.Text = "Password was reset!";
+                    lbMessage.Text = "Password was reset!";
                 }
             }
             /* mail 
-             * 
-             */
+             
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("indigo.shadow.smiles@gmail.com");
             mail.To.Add("pippuriric@gmail.com");

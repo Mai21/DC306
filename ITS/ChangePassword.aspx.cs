@@ -19,7 +19,19 @@ namespace ITS
         protected void btnChange_Click(object sender, EventArgs e)
         {
             /* change password*/
-            string userId = (string)(Session["UserID"]);
+            string targetUserId = "";
+            // admin or not
+            if ((string)(Session["Authority"]) == "True")
+            {
+                targetUserId = (string)(Session["TargetUserID"]);
+            }
+            else 
+            {
+                targetUserId = (string)(Session["UserID"]);
+            }
+
+
+            
 
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
@@ -30,7 +42,7 @@ namespace ITS
                     , con);
 
                 // Set a parameter
-                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@userId", targetUserId);
                 try
                 {
                     con.Open();
@@ -72,7 +84,7 @@ namespace ITS
                     "UPDATE users SET password = @password, updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
                     "WHERE id = @userId ", con);
 
-                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@userId", targetUserId);
                 cmd.Parameters.AddWithValue("@password", BCrypt.HashPassword(txtPassword.Text.Trim(), BCrypt.GenerateSalt()));
                 cmd.Parameters.AddWithValue("@activeUser", "admin");
 

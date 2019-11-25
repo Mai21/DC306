@@ -74,6 +74,9 @@
     <Content Include="Archive.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Styles\Javascript\A_title.js" />
+    <Content Include="images\306logo.png" />
+    <Content Include="Issues.aspx" />
+    <Content Include="Styles\Javascript\A_title.js" />
     <Content Include="Styles\Javascript\Validation.js" />
     <Content Include="CreateTicket.aspx" />
     <Content Include="DashBoardSP.aspx" />
@@ -138,6 +141,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="Issues.aspx.cs">
+      <DependentUpon>Issues.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues.aspx.designer.cs">
+      <DependentUpon>Issues.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

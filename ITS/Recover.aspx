@@ -2,31 +2,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-<div id="extra" class="container">
-    <h2>Please enter your email address below.</h2>
-        <table id="table1">
-	        <tr>
-	            <td colspan="3" class="side-title">
-                    <asp:Label ID="lbErrMessage" runat="server" Text=""></asp:Label>
-                </td>
-	        </tr>
-	        <tr>
-	            <td class="side-title" style="width: 181px">
-                    <asp:Label ID="lbEmail" runat="server" Text="Email:"></asp:Label>
-                    </td>
-	            <td class="auto-style3">
-                    <asp:TextBox ID="txtEmail" runat="server" accesskey="1"></asp:TextBox>
-                </td>
-	            <td><asp:Label ID="lbErrMessageEmail" runat="server" Text=""></asp:Label></td>
-	        </tr>
-           
-	        <tr>
-	            <td class="auto-style2"></td>
-	            <td class="auto-style3"></td>
-	            <td>
-                    <asp:Button ID="btnReset" runat="server" Text="Reset My Password" accesskey="2" OnClick="btnReset_Click" />
-                </td>
-	        </tr>
-        </table>
-    </div>
+    <div id="extra" class="container">
+        <h2>Please enter your UserID below.</h2>
+        <form id="form1" runat="server" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+		    <div>
+			    <asp:Label ID="lbMessage" class="text-red" runat="server" Text=""></asp:Label>
+		    </div>
+		    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+			    <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="1"></asp:TextBox>
+		    </div>
+		    <div class="flex items-center justify-between">
+			    <asp:Button ID="btnReset" class="bg-black hover:bg-gray-700 text-white py-2 px-4" runat="server" Text="Request PasswordRecovery" accesskey="2" OnClientClick="return validationRecover();"  OnClick="btnReset_Click"/>
+		    </div>
+	    </form>
+     </div>
 </asp:Content>

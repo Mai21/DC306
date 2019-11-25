@@ -16,6 +16,7 @@ namespace ITS
             // System.Diagnostics.Debug.WriteLine((string)(Session["Authority"]));
 
             // out of authoriy not allowed to access
+            // out of authoriy not allowed to access
             if ((string)(Session["Authority"]) != "True")
             {
                 Response.Redirect("Login.aspx");
@@ -43,12 +44,38 @@ namespace ITS
                 }*/
             }
 
+            // reload
+            if (Request.QueryString["pm"] == "1")
+            {
+                lbMessage.Text = "New Title was added!";
+            }
+            else if (Request.QueryString["pm"] == "2") 
+            {
+                lbMessage.Text = "Update was successful!";
+            }
+
+            if (!IsPostBack) {
+                if (rblTier.SelectedIndex == -1)
+                {
+                    rblTier.SelectedIndex = 0;
+                }
+                else
+                {
+                    // button name 
+                    btnExecute.Text = "Update";
+                }
+            }
+
             tbTitle.Attributes.Add("placeholder", "Input a Title");
             tbTitle.Attributes.Add("maxlength", "100");
         }
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
+            // check update or insert 
+
+
+
             // check duplication
             // Connect SQL 
             using (SqlConnection con = new SqlConnection(Globals.connstr))
@@ -57,11 +84,13 @@ namespace ITS
                     "SELECT name " +
                     "FROM titles " +
                     "WHERE name = @name" + (btnExecute.Text != "Add"? " and id <> @id":"")
+                    "WHERE name = @name" + (!isAdd ? " and id <> @id":"")
                     , con);
 
                 // Set a parameter
                 cmd.Parameters.AddWithValue("@name", tbTitle.Text.Trim());
                 cmd.Parameters.AddWithValue("@id", hdTitleId.Value.Trim());
+                cmd.Parameters.AddWithValue("@id", hfTitleId.Value.Trim());
                 try
                 {
                     con.Open();
@@ -71,13 +100,14 @@ namespace ITS
                         if (rdr.HasRows)
                         {
                             // Existing
-                            lbErrMessageTitle.Text = "This title is already existing";
+                            lbMessage.Text = "This title is already existing";
                             return;
                             
                         }
                     }
 
-                    if (btnExecute.Text == "Add") {
+                    if (isAdd) {
+                        System.Diagnostics.Debug.WriteLine("add") ;
                         cmd = new SqlCommand("" +
                         "INSERT INTO titles(name, tier_level," +
                         "created_date, created_user, updated_date, updated_user) " +
@@ -85,6 +115,7 @@ namespace ITS
                         "values(@name, @level, CURRENT_TIMESTAMP, @currentUserName, CURRENT_TIMESTAMP, @currentUserName)", con);
                     }
                     else {
+                        System.Diagnostics.Debug.WriteLine("update");
                         cmd = new SqlCommand("" +
                             "UPDATE titles " +
                             "SET name = @name, " +
@@ -94,11 +125,10 @@ namespace ITS
                             "WHERE id = @id", con);
                     }
 
-                    cmd.Parameters.AddWithValue("@id", hdTitleId.Value.Trim());
                     cmd.Parameters.AddWithValue("@name", tbTitle.Text.Trim());
                     cmd.Parameters.AddWithValue("@level", rblTier.SelectedIndex.ToString());
                     cmd.Parameters.AddWithValue("@currentUserName", (string)(Session["UserID"]));
-
+                    
                     if (cmd.ExecuteNonQuery() == 1)
                     {
                         //lbErrMessageTitle.Text = "New User is added!";
@@ -107,19 +137,8 @@ namespace ITS
                     
                     if (cmd.ExecuteNonQuery() == 1)
                     {
-                        if (btnExecute.Text == "Add")
-                        {
-                            Response.Redirect(Request.QueryString["pm"] == null ?
-                            Request.Url.OriginalString + "?pm=1" :
-                            Request.Url.OriginalString.Substring(1, Request.Url.OriginalString.IndexOf("?")) + "?pm=1");
-                        }
-                        else 
-                        {
-                            Response.Redirect(Request.QueryString["pm"] == null ?
-                            Request.Url.OriginalString + "?pm=2" :
-                            Request.Url.OriginalString.Substring(1, Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
-                        }
-
+                        // Success
+                        // get id inserted and show the list
                     }
                 }
                 catch (Exception ex)
@@ -127,7 +146,7 @@ namespace ITS
                     // System Error
                     Console.WriteLine(ex.Message);
                     // Move to an Error page
-                    lbErrMessageTitle.Text = "System Error!";
+                    lbMessage.Text = "System Error!";
                     return;
                 }
             }
