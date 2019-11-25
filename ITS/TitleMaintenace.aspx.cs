@@ -13,10 +13,35 @@ namespace ITS
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check the authority
+            // System.Diagnostics.Debug.WriteLine((string)(Session["Authority"]));
+
+            // out of authoriy not allowed to access
             // out of authoriy not allowed to access
             if ((string)(Session["Authority"]) != "True")
             {
                 Response.Redirect("Login.aspx");
+            }
+
+            // reload
+            if (Request.QueryString["pm"] == "1")
+            {
+                lbErrMessageTitle.Text = "New Title was added!";
+            }
+            else if (Request.QueryString["pm"] == "2") 
+            {
+                lbErrMessageTitle.Text = "Update was successful!";
+            }
+
+            if (!IsPostBack) {
+                if (rblTier.SelectedIndex == -1)
+                {
+                    rblTier.SelectedIndex = 0;
+                }
+                /*else
+                {
+                    // button name 
+                    btnExecute.Text = "Update";
+                }*/
             }
 
             // reload
@@ -47,10 +72,9 @@ namespace ITS
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
-            bool isAdd = true;
-            if (hfTitleId.Value.Trim().Length > 0) {
-                isAdd = false;
-            }
+            // check update or insert 
+
+
 
             // check duplication
             // Connect SQL 
@@ -59,11 +83,13 @@ namespace ITS
                 SqlCommand cmd = new SqlCommand(
                     "SELECT name " +
                     "FROM titles " +
+                    "WHERE name = @name" + (btnExecute.Text != "Add"? " and id <> @id":"")
                     "WHERE name = @name" + (!isAdd ? " and id <> @id":"")
                     , con);
 
                 // Set a parameter
                 cmd.Parameters.AddWithValue("@name", tbTitle.Text.Trim());
+                cmd.Parameters.AddWithValue("@id", hdTitleId.Value.Trim());
                 cmd.Parameters.AddWithValue("@id", hfTitleId.Value.Trim());
                 try
                 {
@@ -99,26 +125,20 @@ namespace ITS
                             "WHERE id = @id", con);
                     }
 
-                    cmd.Parameters.AddWithValue("@id", hfTitleId.Value.Trim());
                     cmd.Parameters.AddWithValue("@name", tbTitle.Text.Trim());
                     cmd.Parameters.AddWithValue("@level", rblTier.SelectedIndex.ToString());
                     cmd.Parameters.AddWithValue("@currentUserName", (string)(Session["UserID"]));
                     
                     if (cmd.ExecuteNonQuery() == 1)
                     {
-                        if (isAdd)
-                        {
-                            Response.Redirect(Request.QueryString["pm"] == null ?
-                            Request.Url.OriginalString + "?pm=1" :
-                            Request.Url.OriginalString.Substring(0, Request.Url.OriginalString.IndexOf("?")) + "?pm=1");
-                        }
-                        else 
-                        {
-                            Response.Redirect(Request.QueryString["pm"] == null ?
-                            Request.Url.OriginalString + "?pm=2" :
-                            Request.Url.OriginalString.Substring(0, Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
-                        }
-
+                        //lbErrMessageTitle.Text = "New User is added!";
+                        Response.Redirect(Request.Url.OriginalString + "?pm=1");
+                    }
+                    
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        // Success
+                        // get id inserted and show the list
                     }
                 }
                 catch (Exception ex)

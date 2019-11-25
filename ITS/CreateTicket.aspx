@@ -51,7 +51,7 @@
 
         <%-- This is the Button for Submit --%>
         <div class="flex items-center justify-between" style="float:right">
-            <asp:Button ID="btnSubmit" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Submit" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px"/>
+            <asp:Button ID="btnSubmit" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Submit" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnSubmit_Click"/>
         </div>
 
          <%-- This is the Button for Clear --%>

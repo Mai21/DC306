@@ -11,24 +11,22 @@
     
     <section class="my-8 font-sans container max-w-xl m-auto flex flex-col md:flex-row sm:items-center">
      <div class="w-full md:w-1/2 flex flex-col justify-center items-start px-6 py-0 md:py-8 md:px-8 lg:items-start">
-        <label for="tagline" class="uppercase tracking-wide text-gray-700 font-bold">various aspects</label>
-        <h1 class="mt-2 mb-4 font-medium">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h1>
-            <p class="leading-normal mb-4 text-gray-700">Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
-            Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
-            Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>
+        <label for="tagline" class="uppercase tracking-wide text-gray-700 font-bold">Values of Tuam Academy</label>
+        <h1 class="mt-2 mb-4 font-medium">An internationally accredited Private Institution that is dedicated to innovation and excellence in the service of God and Country.</h1>
+            <p class="leading-normal mb-4 text-gray-700">Tuam Academy is a leading New Zealand training provider offering students the opportunity to gain the relevant education and skills to succeed in work and life. We have been a registered Private Training Establishment (PTE) since 1996 and are one of the largest NZQA-accredited PTEs in New Zealand.</p>
      </div>
   <div class="w-full md:w-1/2 flex flex-row md:flex-col justify-between md:justify-center items-center p-2 md:p-8 items-center md:items-start">
     <div class="flex items-center sm:border-r md:border-b md:border-r-0 p-4 w-1/2 md:w-auto">
      
       <div class="">
         <h2 class="text-black font-medium">About Tuam Academy Helpdesk Online</h2>
-        <p class="text-gray-700 leading-normal">Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+        <p class="text-gray-700 leading-normal">Tuam Academy is a duly incorporated company which owns and operations registered training providers established as a private training establishment under the Education Act 1989 whose address for service is in Tuam Street Christchurch. Tuam Academy consists of: Tuam Academy English Limited, Tuam Academy Hospitality & Healthcare Limited, and Tuam Academy Business & Technology Limited.</p>
       </div>
     </div>
     <div class="flex items-center p-4 w-1/2 md:w-auto">
       <div class="">
-        <h2 class="text-black font-medium">Vestibulum auctor dapibus neque.</h2>
-        <p class="text-gray-700 leading-normal">Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>
+        <h2 class="text-black font-medium">Career Support</h2>
+        <p class="text-gray-700 leading-normal">Our Tuam Academy Career Support team will support and guide you on your employment journey. A range of workshops and one to one support is provided around your curriculum vitae (CV), cover letter, job search, interview skills and more.</p>
       </div>
     </div>
   </div>
