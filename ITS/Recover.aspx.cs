@@ -15,36 +15,45 @@ namespace ITS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            tbUserID.Attributes.Add("placeholder", "Input UserID eg.190001CH");
-            tbUserID.Attributes.Add("maxlength", "8");
-
+            tbEmail.Attributes.Add("placeholder", "Input Email");
+            tbEmail.Attributes.Add("maxlength", "100");
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            // Register as a new issue
+            // send a email
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
-                con.Open();
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT id FROM users " +
+                    "WHERE e_mail = @email"
+                    , con);
+                // Set a parameter
+                cmd.Parameters.AddWithValue("@email", tbEmail.Text.Trim());
 
+                con.Open();
+                
                 try
                 {
-                    // insert recovery request wtih title ID:1 
-                    SqlCommand cmd = new SqlCommand("" +
-                        "Insert into issues(" +
-                        "user_id, title_id, description, status, " +
-                        "created_user, created_date, updated_user, updated_date) " +
-                        "values(@userId, 1, 'Password RecoveryRequest',1," +
-                        "@userId,CURRENT_TIMESTAMP,@userId,CURRENT_TIMESTAMP)", con);
-
-                    cmd.Parameters.AddWithValue("@userId", tbUserID.Text);
-
-                    if (cmd.ExecuteNonQuery() == 1)
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        lbMessage.Text = "The request was successful! \n Please wait for a contact from Technical Support";
-                        sendMail();
-                        return;
+                        if (rdr.Read())
+                        {
+                            // mail
+                            sendMail(tbEmail.Text.Trim(), rdr.GetValue(0).ToString());
+                            insertRecovery(rdr.GetValue(0).ToString());
+
+                            lbMessage.Text = "Email will be sent your registered email address.";
+                        }
+                        else
+                        {
+                            // No user Id exists
+                            lbMessage.Text = "This email is not registered";
+                            return;
+                        }
+
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -56,47 +65,47 @@ namespace ITS
                 }
 
             }
-
-
-
-
-            /* Check the existance of email */
-
-
-            /* Reset Password */
-            /*using (SqlConnection con = new SqlConnection(Globals.connstr))
-            {
-                SqlCommand cmd = new SqlCommand("" +
-                    "UPDATE users SET password = @password, updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
-                    "WHERE e_mail = @email ", con);
-
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@password", BCrypt.HashPassword("password", BCrypt.GenerateSalt()));
-                cmd.Parameters.AddWithValue("@activeUser", "admin");
-
-                con.Open();
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    lbMessage.Text = "Password was reset!";
-                }
-            }*/
-
         }
 
-        private void sendMail()
+        private void sendMail(string email, string userId)
         {
             //mail 
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("tuamacademynz@gmail.com");
-            mail.To.Add("pippuriric@gmail.com");
+            mail.To.Add(email);
             mail.Subject = "This mail is send from asp.net application";
-            mail.Body = "This is Email Body Text";
+            mail.Body = "Passoword Recovery Request was sent from your email address.\n" +
+                "Please access to the link below in 24 hours." +
+                "\n" +
+                "\n" +
+                "https://localhost:44391/RecoverPassoword.aspx?ky=" + BCrypt.HashPassword(userId, BCrypt.GenerateSalt()) +
+                "\n" +
+                "\n";
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new NetworkCredential("tuamacademynz@gmail.com", "cieynrdgygnjkdbo");
             smtp.Send(mail);
         }
+
+        private void insertRecovery(string userId) {
+            // insert data to recover table
+            using (SqlConnection con = new SqlConnection(Globals.connstr))
+            {
+                SqlCommand cmd = new SqlCommand("" +
+                    "INSERT INTO password_recovery(user_id, request_date) " +
+                    "VALUES(@userId, CURRENT_TIMESTAMP)", con);
+
+                cmd.Parameters.AddWithValue("@userId", userId);
+
+                con.Open();
+
+                if (cmd.ExecuteNonQuery() != 1)
+                {
+                    // Go to System Error Page
+                }
+            }
+         }
     }
 }
  

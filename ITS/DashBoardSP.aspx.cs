@@ -24,10 +24,11 @@ namespace ITS
                     con.Open();
                     using (SqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        if (rdr.Read())
+                        if (rdr.HasRows)
                         {
                             while (rdr.Read())
                             {
+                                System.Diagnostics.Debug.WriteLine(rdr.GetValue(0).ToString() + ":" + rdr.GetValue(1).ToString());
                                 if (int.Parse(rdr.GetValue(0).ToString()) == 1)
                                 {
                                     lbPendingNumber.Text = rdr.GetValue(1).ToString();
@@ -75,14 +76,6 @@ namespace ITS
                     return;
                 }
             }
-
-
-            // count current pending
-
-            // count current inspecting
-
-
-            // count new issues after last login
         }
 
         protected void btnGoTasks_Click(object sender, EventArgs e)

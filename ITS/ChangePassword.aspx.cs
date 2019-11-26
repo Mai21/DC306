@@ -23,7 +23,7 @@ namespace ITS
                 Response.Redirect("UserMaintenance.aspx");
             }
             tbUserID.Text = (string)(Session["TargetUserID"]);
-            tbPassword.Attributes.Add("placeholder", "Input Password");
+            tbPassword.Attributes.Add("placeholder", "Input new Password");
             tbConfirm.Attributes.Add("placeholder", "Input Confirm Password");
             tbPassword.Attributes.Add("maxlength", "8");
             tbConfirm.Attributes.Add("maxlength", "8");
@@ -33,17 +33,6 @@ namespace ITS
 
         protected void btnChangePW_Click(object sender, EventArgs e)
         {
-            /* change password*/
-            // string targetUserId = "";
-            // admin or not
-            //if ((string)(Session["Authority"]) == "True")
-            //{
-            //    targetUserId = (string)(Session["TargetUserID"]);
-            //}
-            //else 
-            //{
-            //    targetUserId = (string)(Session["UserID"]);
-            
             try
             {
                 using (SqlConnection con = new SqlConnection(Globals.connstr))

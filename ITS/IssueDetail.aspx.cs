@@ -101,8 +101,6 @@ namespace ITS
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("index" + dlStatusList.SelectedIndex);
-            System.Diagnostics.Debug.WriteLine("issssss" + status);
             if (tbDescriptionAdd.Text.Length == 0 && dlStatusList.SelectedIndex == status) {
                 // no change
                 lbMessage.Text = "No change!";
@@ -122,7 +120,7 @@ namespace ITS
                         "WHERE id = @issueId ", con);
 
                     cmd.Parameters.AddWithValue("@issueId", issueId);
-                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@status", dlStatusList.SelectedIndex);
                     cmd.Parameters.AddWithValue("@addDescription", "\n" + tbDescriptionAdd.Text);
 
                     cmd.Parameters.AddWithValue("@activeUser", "admin");

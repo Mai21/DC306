@@ -76,6 +76,7 @@
     <Content Include="images\306logo.png" />
     <Content Include="IssueDetail.aspx" />
     <Content Include="Issues.aspx" />
+    <Content Include="RecoverPassoword.aspx" />
     <Content Include="Styles\Javascript\A_initialize.js" />
     <Content Include="Styles\Javascript\Validation.js" />
     <Content Include="CreateTicket.aspx" />
@@ -176,6 +177,13 @@
     </Compile>
     <Compile Include="Recover.aspx.designer.cs">
       <DependentUpon>Recover.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecoverPassoword.aspx.cs">
+      <DependentUpon>RecoverPassoword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecoverPassoword.aspx.designer.cs">
+      <DependentUpon>RecoverPassoword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
