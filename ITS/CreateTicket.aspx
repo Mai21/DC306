@@ -24,7 +24,7 @@
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
             <asp:DropDownList ID="IssueList" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server">
               <asp:ListItem>I forgot my Student Portal Password.</asp:ListItem> 
-                <asp:ListItem>I forgot my Student Portal Username.</asp:ListItem>
+                <asp:ListItem>I forgot my Student Portal Username.</asp:ListItem >
                 <asp:ListItem>I cant connect to the Internet / WIFI</asp:ListItem>
                 <asp:ListItem>I cant print document / files.</asp:ListItem>
                 <asp:ListItem>I cant open my Laptop.</asp:ListItem>
@@ -36,6 +36,10 @@
                 <asp:ListItem>I cant access social media sites</asp:ListItem>
                 <asp:ListItem>My issue is not on the lists/ Other Reasons.</asp:ListItem>
             </asp:DropDownList>
+        </div>
+
+        <div class="w-full text-gray-900 mt-6 md:mt-0 leading-normal">
+          <asp:Label ID="lblMessage" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
         </div>
 
         <%-- This is the label for the Textbox --%>
@@ -58,5 +62,6 @@
         <div class="flex items-center justify-between" style="float:right">
             <asp:Button ID="btnClear1" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click1"/>
         </div>
+
     </form>
 </asp:Content>
