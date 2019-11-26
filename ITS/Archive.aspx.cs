@@ -29,9 +29,8 @@ namespace ITS
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("Insert into issues (title_id, description) Values (@title_id, @description)", conn);
             
-            
-        }
 
+        }
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
 

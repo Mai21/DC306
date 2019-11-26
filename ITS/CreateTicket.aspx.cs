@@ -61,20 +61,19 @@ namespace ITS
         {
             //Insert new ticket issue
             using (SqlConnection conn = new SqlConnection(Globals.connstr))
-
+                
             {
+                System.Diagnostics.Debug.WriteLine("This is the error lines.");
                 conn.Open();
 
                 try
                 {
                     SqlCommand cmd = new SqlCommand("" +
                      "Insert into issues(" +
-                     "user_id, title_id, description, status, " +
+                     "user_id, title_id, description, " +
                      "created_user, created_date, updated_user, updated_date) " +
-                     "values(@userId, 1, 'Creat new ticket,1," +
-                     "@userId,CURRENT_TIMESTAMP,@userId,CURRENT_TIMESTAMP)", conn);
-
-                    cmd.Parameters.AddWithValue("@title_id", IssueList.Text);
+                     "values(@userId, 1, 'Create new ticket',1," + "@userId,CURRENT_TIMESTAMP,@userId,CURRENT_TIMESTAMP)", conn);
+                      cmd.Parameters.AddWithValue("@title_id", IssueList.Text);
 
                     if (cmd.ExecuteNonQuery() == 1)
                     {
@@ -85,7 +84,7 @@ namespace ITS
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    lblMessage.Text = "Unsuccessfully submitted ticket, please try again!";
+                    lblMessage.Text = "Unsucessful filing of new ticket, please try again!";
                     return;
                 }
             }
