@@ -15,9 +15,13 @@
         border-radius: 4px
     }
 
+h4{
+    font-size: inherit;
+    font-weight: inherit;
+}
 
-/*Page*/
-.wrapper
+    /*Page*/
+    .wrapper
 {
     width: 950px;
     margin: auto;

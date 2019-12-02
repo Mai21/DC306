@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student.Master" AutoEventWireup="true" CodeBehind="CreateTicket.aspx.cs" Inherits="ITS.CreateTicket" %>
-        
-<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-        </asp:Content>
+      
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
         <style type="text/css">
             .auto-style1 {
@@ -10,8 +11,9 @@
             }
         </style>
         </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-   
+   <div id="extra" class="container w-full items-center max-w-md mx-auto my-8 px-8 pt-6 pb-8">
      <%-- This is the main form of Creating Ticket --%>
     <form id="form1" runat="server" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">   
        
@@ -23,8 +25,8 @@
         <%-- This is the DropdownList --%>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
             <asp:DropDownList ID="IssueList" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server">
-                <%-- asp:ListItem>I forgot my Student Portal Password.</asp:ListItem> 
-                <asp:ListItem>I forgot my Student Portal Username.</asp:ListItem
+              <asp:ListItem>I forgot my Student Portal Password.</asp:ListItem> 
+                <asp:ListItem>I forgot my Student Portal Username.</asp:ListItem >
                 <asp:ListItem>I cant connect to the Internet / WIFI</asp:ListItem>
                 <asp:ListItem>I cant print document / files.</asp:ListItem>
                 <asp:ListItem>I cant open my Laptop.</asp:ListItem>
@@ -34,8 +36,13 @@
                 <asp:ListItem>I want to change my Student Portal Password.</asp:ListItem>
                 <asp:ListItem>I cant view my Attendance Portal</asp:ListItem>
                 <asp:ListItem>I cant access social media sites</asp:ListItem>
-                <asp:ListItem>My issue is not on the lists/ Other Reasons.</asp:ListItem>--%>
+                <asp:ListItem>My issue is not on the lists/ Other Reasons.</asp:ListItem>
             </asp:DropDownList>
+        </div>
+
+        <%-- This is the label for the message --%>
+        <div class="w-full text-gray-900 mt-6 md:mt-0 leading-normal">
+          <asp:Label ID="lblMessage" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
         </div>
 
         <%-- This is the label for the Textbox --%>
@@ -58,5 +65,7 @@
         <div class="flex items-center justify-between" style="float:right">
             <asp:Button ID="btnClear1" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click1"/>
         </div>
+
     </form>
+    </div>
 </asp:Content>
