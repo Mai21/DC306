@@ -72,11 +72,13 @@
   <ItemGroup>
     <Content Include="Aboutus.aspx" />
     <Content Include="Archive.aspx" />
+    <Content Include="ChangePasswordSP.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="images\306logo.png" />
     <Content Include="IssueDetail.aspx" />
     <Content Include="Issues.aspx" />
     <Content Include="RecoverPassoword.aspx" />
+    <Content Include="Styles\Css\output.css" />
     <Content Include="Styles\Javascript\A_initialize.js" />
     <Content Include="Styles\Javascript\Validation.js" />
     <Content Include="CreateTicket.aspx" />
@@ -91,7 +93,7 @@
     <Content Include="Recover.aspx" />
     <Content Include="Styles\Css\main.css" />
     <Content Include="Styles\Html\header.html" />
-    <Content Include="Styles\Css\login.css" />
+    <Content Include="Styles\Css\master.css" />
     <Content Include="SystemError.aspx" />
     <Content Include="TitleMaintenace.aspx" />
     <Content Include="UserMaintenance.aspx" />
@@ -111,6 +113,13 @@
     </Compile>
     <Compile Include="Archive.aspx.designer.cs">
       <DependentUpon>Archive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswordSP.aspx.cs">
+      <DependentUpon>ChangePasswordSP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordSP.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSP.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -241,10 +250,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Styles\Jquery\" />
-    <Folder Include="Styles\JS\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

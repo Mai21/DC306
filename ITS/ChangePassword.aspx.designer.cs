@@ -33,6 +33,24 @@ namespace ITS
         protected global::System.Web.UI.WebControls.TextBox tbUserID;
 
         /// <summary>
+        /// lbErrCurrentPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbErrCurrentPassword;
+
+        /// <summary>
+        /// tbCurrentPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbCurrentPassword;
+
+        /// <summary>
         /// lbErrPassword control.
         /// </summary>
         /// <remarks>

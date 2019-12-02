@@ -1,11 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="ITS.ChangePassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ChangePasswordSP.aspx.cs" Inherits="ITS.ChangePasswordSP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-	<div class="m-auto h-65 max-w-md">
-        <h2 class="mx-6 cp_title mt-10">
-            Please enter a new password below.
-        </h2>
+	<div class="container max-w-xl m-auto h-65">
+        <h2>Please enter a new password below.</h2>
         <section class="bg-white">
             <div class="container py-2 px-4">
                 <div>
@@ -13,10 +11,6 @@
 		        </div>
 		        <div class="relative border rounded mb-4 shadow appearance-none label-floating">
 			        <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" disabled="disabled" runat="server"></asp:TextBox>
-		        </div>
-                <asp:Label ID="lbErrCurrentPassword" class="text-red" runat="server" Text=""></asp:Label>
-                <div class="relative border rounded mb-4 shadow appearance-none label-floating"> 
-			        <asp:TextBox ID="tbCurrentPassword" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server" accesskey="1"></asp:TextBox>
 		        </div>
 		        <asp:Label ID="lbErrPassword" class="text-red" runat="server" Text=""></asp:Label>
                 <div class="relative border rounded mb-4 shadow appearance-none label-floating"> 

@@ -5,9 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-  <div class="dashboard" style="padding-left:20px"> </div>
-    <h1>Hi,  <asp:Label ID="lbFirstName" runat="server" Text="Tuam Student"></asp:Label></h1>
-    <p>Welcome to ServiceWow Portal where your technical issues are being resolve within 24 hours.</p>
+    <div class="dashboard" style="padding-left:20px"> </div>
+    <h1 class="mx-6">Hi,  <asp:Label ID="lbFirstName" runat="server" Text="Tuam Student"></asp:Label></h1>
+    <p class="mx-6">Welcome to ServiceWow Portal where your technical issues are being resolve within 24 hours.</p>
     
     <section class="my-8 font-sans container max-w-xl m-auto flex flex-col md:flex-row sm:items-center">
      <div class="w-full md:w-1/2 flex flex-col justify-center items-start px-6 py-0 md:py-8 md:px-8 lg:items-start">

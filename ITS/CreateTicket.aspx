@@ -15,7 +15,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
    <div id="extra" class="container w-full items-center max-w-md mx-auto my-8 px-8 pt-6 pb-8">
      <%-- This is the main form of Creating Ticket --%>
-    <form id="form1" runat="server" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">   
+    <div class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">   
        
         <%-- This is the label for the DropdownList --%>
         <div class="w-full text-gray-900 mt-6 md:mt-0 leading-normal">
@@ -66,6 +66,6 @@
             <asp:Button ID="btnClear1" class="bg-black hover:bg-black text-white py-2 px-4" runat="server" Text="Clear" Width="70px" BackColor="#333333" BorderColor="White" BorderStyle="Solid" BorderWidth="1px" OnClick="btnClear_Click1"/>
         </div>
 
-    </form>
+    </div>
     </div>
 </asp:Content>

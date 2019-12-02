@@ -103,6 +103,9 @@ namespace ITS
                             lblMessage.Text = "Empty description. Please describe the issue.";
                             return;
                         }
+
+                        // if succeed, send mail
+                        CommonUtil.sendMail((string)(Session["Email"]), (string)(Session["UserID"]), false);
                     }
                     catch (Exception ex)
                     {

@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-   <form id="form1" runat="server" class="font-sans text-sm rounded w-full mx-auto"> 
+
         <section class="bg-gray-300 font-sans">
   <div class="container m-auto flex flex-col md:flex-row max-w-xl">
     <div class="flex flex-col w-full lg:w-1/2 justify-center items-start py-8">
@@ -21,5 +21,4 @@
         class="w-full"></div>
   </div>
     </section>
-     </form>
 </asp:Content>

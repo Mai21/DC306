@@ -13,5 +13,12 @@ namespace ITS
         {
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            // session clear
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
     }
 }

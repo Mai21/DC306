@@ -588,3 +588,9 @@ input:disabled {
     position: absolute; 
     bottom: 0;
 }
+
+.cp_title {
+    display: block !important;
+    font-size: 1.5em !important;
+    font-weight: bold !important;
+}

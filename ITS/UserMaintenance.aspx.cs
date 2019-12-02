@@ -229,7 +229,7 @@ namespace ITS
         protected void btnChangePW_Click(object sender, EventArgs e)
         {
             Session["TargetUserID"] = hfTargetId.Value.Trim();
-            Response.Redirect("ChangePassword.aspx");
+            Response.Redirect("ChangePasswordSP.aspx");
         }
     }
 }

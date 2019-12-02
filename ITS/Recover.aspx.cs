@@ -40,7 +40,7 @@ namespace ITS
                         if (rdr.Read())
                         {
                             // mail
-                            sendMail(tbEmail.Text.Trim(), rdr.GetValue(0).ToString());
+                            CommonUtil.sendMail(tbEmail.Text.Trim(), rdr.GetValue(0).ToString(), true);
                             insertRecovery(rdr.GetValue(0).ToString());
 
                             lbMessage.Text = "Email will be sent your registered email address.";
@@ -64,27 +64,6 @@ namespace ITS
                 }
 
             }
-        }
-
-        private void sendMail(string email, string userId)
-        {
-            //mail 
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("tuamacademynz@gmail.com");
-            mail.To.Add(email);
-            mail.Subject = "This mail is send from asp.net application";
-            mail.Body = "Passoword Recovery Request was sent from your email address.\n" +
-                "Please access to the link below in 24 hours." +
-                "\n" +
-                "\n" +
-                "https://localhost:44391/RecoverPassoword.aspx?ky=" + BCrypt.HashPassword(userId, BCrypt.GenerateSalt()) +
-                "\n" +
-                "\n";
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("tuamacademynz@gmail.com", "cieynrdgygnjkdbo");
-            smtp.Send(mail);
         }
 
         private void insertRecovery(string userId) {

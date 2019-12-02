@@ -17,6 +17,9 @@
 		</div>
 		<div class="flex items-center justify-between">
 			<asp:Button ID="btnLogin" class="bg-black hover:bg-gray-700 text-white py-2 px-4" runat="server" Text="Login" accesskey="3" OnClientClick="return validationLogin();"  OnClick="btnLogin_Click"/>
-		</div>
+		    <a class="inline-block align-baseline text-gray-500 hover:text-gray-700" href="/Recover.aspx">
+				Forgot Password?
+			</a>
+        </div>
     </div>
 </asp:Content>

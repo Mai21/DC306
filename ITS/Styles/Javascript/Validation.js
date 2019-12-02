@@ -11,6 +11,15 @@
     return errMessage;
 };
 
+var valPassword = function () {
+    var password = $("#contentBody_tbPassword").val();
+    var errMessage = '';
+    if (password == '') {
+        errMessage = 'Password is empty!'
+    }
+    return errMessage;
+};
+
 var valEmail = function () {
     var reg = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
     var email = $("#contentBody_tbEmail").val();
@@ -20,16 +29,6 @@ var valEmail = function () {
     }
     else if (!reg.test(email)) {
         errMessage = 'Email format is wrong!'
-    }
-    return errMessage;
-};
-
-
-var valPassword = function () {
-    var password = $("#contentBody_tbPassword").val();
-    var errMessage = '';
-    if (password == '') {
-        errMessage = 'Password is empty!'
     }
     return errMessage;
 };
