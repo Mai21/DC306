@@ -11,52 +11,70 @@ namespace ITS
 {
 
 
-    public partial class DashBoardSP
+    public partial class RecoverPassoword
     {
 
         /// <summary>
-        /// form1 control.
+        /// lbMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lbMessage;
 
         /// <summary>
-        /// lbNewIssueNumber control.
+        /// tbUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbNewIssueNumber;
+        protected global::System.Web.UI.WebControls.TextBox tbUserID;
 
         /// <summary>
-        /// lbPendingNumber control.
+        /// lbErrPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbPendingNumber;
+        protected global::System.Web.UI.WebControls.Label lbErrPassword;
 
         /// <summary>
-        /// lbInspectingNumber control.
+        /// tbPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbInspectingNumber;
+        protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
-        /// btnGoTasks control.
+        /// lbErrConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGoTasks;
+        protected global::System.Web.UI.WebControls.Label lbErrConfirm;
+
+        /// <summary>
+        /// tbConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbConfirm;
+
+        /// <summary>
+        /// btnChangePW control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnChangePW;
     }
 }

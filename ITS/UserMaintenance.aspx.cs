@@ -37,6 +37,7 @@ namespace ITS
                 if (rblAvailability.SelectedIndex == -1)
                 {
                     rblAvailability.SelectedIndex = 0;
+                    rblAuthority.SelectedIndex = 0;
                 }
                 else
                 {
@@ -67,7 +68,7 @@ namespace ITS
         protected void btnExecute_Click(object sender, EventArgs e)
         {
             bool isAdd = true;
-            if (hfFlg.Value.Trim() == "false")
+            if (hfFlg.Value.Trim() == "true")
             {
                 isAdd = false;
             }
@@ -132,8 +133,8 @@ namespace ITS
 
                         string passwordHash = BCrypt.HashPassword(tbPassword.Text.Trim(), BCrypt.GenerateSalt());
                         cmd.Parameters.AddWithValue("@password", passwordHash);
-                        cmd.Parameters.AddWithValue("@availability", "0");
-                        cmd.Parameters.AddWithValue("@authLevel", "1");
+                        cmd.Parameters.AddWithValue("@availability", rblAvailability.SelectedIndex.ToString());
+                        cmd.Parameters.AddWithValue("@authLevel", rblAuthority.SelectedIndex.ToString());
                         cmd.Parameters.AddWithValue("@activeUser", "admin");
 
 
@@ -185,11 +186,11 @@ namespace ITS
                                 return;
                             }
                         }
-                        System.Diagnostics.Debug.WriteLine("here8");
+                        
                         SqlCommand cmd = new SqlCommand("" +
                             "UPDATE users " +
                             "SET first_name = @firstName, last_name = @lastName, " +
-                            "e_mail = @email, availability = @availability, " +
+                            "e_mail = @email, authorization_level_id = @authLevel, availability = @availability, " +
                             "updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
                             "WHERE id = @userId ", con);
 
@@ -198,19 +199,16 @@ namespace ITS
                         cmd.Parameters.AddWithValue("@lastName", tbLastName.Text);
                         cmd.Parameters.AddWithValue("@email", tbEmail.Text);
 
-                        cmd.Parameters.AddWithValue("@availability", "0");
-                        cmd.Parameters.AddWithValue("@activeUser", "admin");
+                        cmd.Parameters.AddWithValue("@availability", rblAvailability.SelectedIndex.ToString());
+                        cmd.Parameters.AddWithValue("@authLevel", rblAuthority.SelectedIndex.ToString());
 
-                        System.Diagnostics.Debug.WriteLine("here9");
+                        cmd.Parameters.AddWithValue("@activeUser", "admin");
                         if (cmd.ExecuteNonQuery() == 1)
                         {
-                            Response.Redirect(Request.QueryString["pm"] == "" ?
+                            Response.Redirect(Request.QueryString["pm"] == null ?
                                 Request.Url.OriginalString + "?pm=2" :
                                 Request.Url.OriginalString.Substring(0, Request.Url.OriginalString.IndexOf("?")) + "?pm=2");
-                            System.Diagnostics.Debug.WriteLine("here10");
                         }
-
-                        System.Diagnostics.Debug.WriteLine("her11");
                     }
                     catch (Exception ex)
                     {

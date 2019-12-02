@@ -15,7 +15,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav class="font-sans bg-white text-center flex justify-between items-center mx-auto mt-4 mb-6 px-8 pb-8 mx-auto container overflow-hidden">
+    <nav class="font-sans bg-white text-center flex justify-between items-center mx-auto mt-4 mb-6 px-8 mx-auto container overflow-hidden">
         <a href="/" class="block text-left">
             <img src="images/306logo.png" class="h-11 rounded-full" alt="logo">
         </a>

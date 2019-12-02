@@ -5,43 +5,25 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
     <h1>Hello, Tech Support</h1>
-
-    <section class="bg-white py-4 font-sans">
-  <div class="container max-w-xl m-auto flex flex-wrap md:flex-no-wrap items-center justify-between">
-    <div class="flex w-full justify-start justify-center md:justify-start">
-      <div class="flex flex-col border-r px-8 items-center">
-        <h1 class="">34%</h1>
-        <span class="text-xs block uppercase text-gray-900 tracking-wide mt-1">Processing</span>
-      </div>
-      <div class="flex flex-col px-8 border-r items-center">
-        <h1 class="">12</h1>
-        <span class="text-xs block uppercase text-gray-900 tracking-wide mt-1">New Issues</span>
-      </div>
-      <div class="flex flex-col px-8 items-center">
-        <h1 class="">65%</h1>
-        <span class="text-xs block uppercase text-gray-900 tracking-wide mt-1">Inspecting</span>
-      </div>
-    </div>
-    <button class="w-full md:w-32 bg-black hover:bg-black text-white py-2 px-4 mt-6 md:mt-0" type="button">
-    Check more
-    </button>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-  </div>
-</section>
-    
+    <form id="form1" runat="server" class="font-sans text-sm rounded w-full mx-auto"> 
+        <section class="bg-gray-300 py-4 my-8 px-8 pt-6 pb-8 h-99">
+            <div class="container max-w-xl m-auto flex flex-wrap md:flex-no-wrap items-center justify-between">
+                <div class="flex w-full justify-start justify-center md:justify-start">
+                    <div class="flex flex-col px-8 border-r items-center">
+                        <h1 class=""><asp:Label ID="lbNewIssueNumber" runat="server" Text=""></asp:Label></h1>
+                        <span class="text-xs block uppercase text-gray-900 tracking-wide mt-1">New Issues</span>
+                    </div>
+                    <div class="flex flex-col border-r px-8 items-center">
+                        <h1 class=""><asp:Label ID="lbPendingNumber" runat="server" Text=""></asp:Label></h1>
+                        <span class="text-xs block uppercase text-gray-900 tracking-wide mt-1">Pending</span>
+                    </div>
+                    <div class="flex flex-col px-8 items-center">
+                        <h1 class=""><asp:Label ID="lbInspectingNumber" runat="server" Text=""></asp:Label></h1>
+                        <span class="text-xs block uppercase text-gray-900 tracking-wide mt-1">Inspecting</span>
+                    </div>
+                </div>
+                <asp:Button ID="btnGoTasks" class="bg-black hover:bg-gray-700 text-white py-2 px-4" runat="server" Text="Go Tasks" accesskey="4" OnClick="btnGoTasks_Click"/>
+              </div>
+        </section>
+    </form>
 </asp:Content>

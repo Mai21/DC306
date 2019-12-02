@@ -16,7 +16,7 @@ namespace ITS
         public enum AUTHLEVEL
         {
             ADMIN = 0,
-            GENERAL = 1
+            STUDENT = 1
         }
 
         public enum ISSUSTATUS

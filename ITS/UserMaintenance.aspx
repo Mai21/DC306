@@ -17,34 +17,42 @@
                             <div class="hf"><asp:HiddenField ID="hfFlg" runat="server" /></div>
                             <div class="hf"><asp:HiddenField ID="hfTargetId" runat="server" /></div>
 		                </div>
-		                <div class="relative border rounded mb-4 shadow appearance-none flex">
+		                <asp:Label ID="lbErrUserID" class="text-red" runat="server" Text=""></asp:Label>
+                        <div class="relative border rounded mb-4 shadow appearance-none flex">
 			                <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
-		                </div>
-                        <asp:Label ID="lbErrUserID" class="text-red" runat="server" Text=""></asp:Label>
-                        <div class="relative border rounded mb-4 shadow appearance-none ">
-			                <asp:TextBox ID="tbFirstName" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
 		                </div>
                         <asp:Label ID="lbErrFirstName" class="text-red" runat="server" Text=""></asp:Label>
                         <div class="relative border rounded mb-4 shadow appearance-none ">
-			                <asp:TextBox ID="tbLastName" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
+			                <asp:TextBox ID="tbFirstName" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
 		                </div>
                         <asp:Label ID="lbErrLastName" class="text-red" runat="server" Text=""></asp:Label>
                         <div class="relative border rounded mb-4 shadow appearance-none ">
-			                <asp:TextBox ID="tbEmail" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
+			                <asp:TextBox ID="tbLastName" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
 		                </div>
                         <asp:Label ID="lbErrEmail" class="text-red" runat="server" Text=""></asp:Label>
                         <div class="relative border rounded mb-4 shadow appearance-none ">
+			                <asp:TextBox ID="tbEmail" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
+		                </div>
+                        <asp:Label ID="lbErrPassword" class="text-red" runat="server" Text=""></asp:Label>                        
+                        <div class="relative border rounded mb-4 shadow appearance-none ">
 			                <asp:TextBox ID="tbPassword" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
 		                </div>
-                        <asp:Label ID="lbErrPassword" class="text-red" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbErrConfirm" class="text-red" runat="server" Text=""></asp:Label>
                         <div class="relative border rounded mb-4 shadow appearance-none ">
 			                <asp:TextBox ID="tbConfirm" class="w-full py-2 px-3 text-gray-700 leading-normal rounded tb" runat="server"></asp:TextBox>
 		                </div>
-                        <asp:Label ID="lbErrConfirm" class="text-red" runat="server" Text=""></asp:Label>
                         <div>
+                            <asp:Label ID="lbAvailability" runat="server" Text="User Status"></asp:Label>
                             <asp:RadioButtonList ID="rblAvailability" class="mb-4" runat="server" RepeatColumns="2" accesskey="2">
                                 <asp:ListItem Text="Available" Value="0" />
                                 <asp:ListItem Text="Unavailable" Value="1" />
+		                    </asp:RadioButtonList>
+		                </div>
+                        <div>
+                            <asp:Label ID="lbAuthority" runat="server" Text="User Authority"></asp:Label>
+                            <asp:RadioButtonList ID="rblAuthority" class="mb-4" runat="server" RepeatColumns="2" accesskey="2">
+                                <asp:ListItem Text="Admin" Value="0" />
+                                <asp:ListItem Text="Student" Value="1" />
 		                    </asp:RadioButtonList>
 		                </div>
                         <div class="flex items-center">
@@ -63,10 +71,10 @@
                             <asp:Label ID="first_nameLabel" runat="server" class="w-2/12 px-3" Text='<%# Eval("first_name") %>' />
                             <asp:Label ID="last_nameLabel" runat="server" class="w-2/12 px-3" Text='<%# Eval("last_name") %>' />
                             <asp:Label ID="e_mailLabel" runat="server" class="w-3/12 px-3" Text='<%# Eval("e_mail") %>' />
-                            <asp:Label ID="authorization_level_idLabel" class="w-1/12 px-3" runat="server" Text='<%# Eval("authorization_level_id") %>' />
-                            <asp:Label ID="availabilityLabel" runat="server" class="w-1/12 px-3" Text='<%# Eval("availability") %>' />
+                            <asp:Label ID="authorization_level_idLabel" class="w-1/12 px-3" runat="server" Text='<%# (ITS.CommonUtil.AUTHLEVEL)(Eval("authorization_level_id")) %>' />
+                            <asp:Label ID="availabilityLabel" runat="server" class="w-1/12 px-3" Text='<%# (ITS.CommonUtil.RECORDSTATUS)(Eval("availability")) %>' />
                             <div class="w-2/12 flex items-center">
-                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick='return editUser(this);'/>
+                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick='<%# "return editUser(this," + Eval("availability") + "," + Eval("authorization_level_id") +")"%>'/>
                                 <asp:Button ID="btnChangePW" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="ChangePW" OnClientClick="return setUser(this);" OnClick="btnChangePW_Click" /> 
                             </div>                        
                         </li>
@@ -83,10 +91,10 @@
                             <asp:Label ID="first_nameLabel" runat="server" class="w-2/12 px-3" Text='<%# Eval("first_name") %>' />
                             <asp:Label ID="last_nameLabel" runat="server" class="w-2/12 px-3" Text='<%# Eval("last_name") %>' />
                             <asp:Label ID="e_mailLabel" runat="server" class="w-3/12 px-3" Text='<%# Eval("e_mail") %>' />
-                            <asp:Label ID="authorization_level_idLabel" class="w-1/12 px-3" runat="server" Text='<%# Eval("authorization_level_id") %>' />
-                            <asp:Label ID="availabilityLabel" runat="server" class="w-1/12 px-3" Text='<%# Eval("availability") %>' />                       
+                            <asp:Label ID="authorization_level_idLabel" class="w-1/12 px-3" runat="server" Text='<%# (ITS.CommonUtil.AUTHLEVEL)(Eval("authorization_level_id")) %>' />
+                            <asp:Label ID="availabilityLabel" runat="server" class="w-1/12 px-3" Text='<%# (ITS.CommonUtil.RECORDSTATUS)(Eval("availability")) %>' />                       
                             <div class="w-2/12 flex items-center">
-                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick="return editUser(this);"/>
+                                <asp:Button ID="btnEdit" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Edit" OnClientClick='<%# "return editUser(this," + Eval("availability") + "," + Eval("authorization_level_id") +")"%>'/>
                                 <asp:Button ID="btnChangePW" class="w-1/2 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="ChangePW" OnClientClick="return setUser(this);" OnClick="btnChangePW_Click" /> 
                             </div>
                         </li>

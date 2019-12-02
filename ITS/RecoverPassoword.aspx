@@ -1,16 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="ITS.ChangePassword" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="RecoverPassoword.aspx.cs" Inherits="ITS.RecoverPassoword" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-    <form id="form1" runat="server" class="font-sans text-sm rounded max-w-md mx-auto my-8 px-8 pt-6 pb-8 w-1/2"> 
-		<h2>Please enter a new password below.</h2>
+<div id="extra" class="container font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8 ">
         <section class="bg-white">
+            <h2>Please enter your UserID, new password and confirm password below.</h2>
             <div class="container py-2 px-4">
                 <div>
 			        <asp:Label ID="lbMessage" class="text-red" runat="server" Text=""></asp:Label>
 		        </div>
 		        <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-			        <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" disabled="disabled" runat="server"></asp:TextBox>
+			        <asp:TextBox ID="tbUserID" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" runat="server"></asp:TextBox>
 		        </div>
 		        <asp:Label ID="lbErrPassword" class="text-red" runat="server" Text=""></asp:Label>
                 <div class="relative border rounded mb-4 shadow appearance-none label-floating"> 
@@ -25,5 +27,6 @@
 		        </div>
             </div>
         </section>
-    </form>
+   </div>
+
 </asp:Content>
