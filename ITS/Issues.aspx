@@ -37,7 +37,9 @@
                         <asp:Label ID="descriptionLabel" runat="server" class="w-3/12 px-3" Text='<%# Eval("description") %>' />
                         <asp:Label ID="statusLabel" runat="server" class="w-1/12 px-3" Text='<%# (ITS.CommonUtil.ISSUSTATUS)(Eval("status")) %>' />
                         <asp:Label ID="updated_dateLabel" runat="server" class="w-1/12 px-3" Text='<%# Eval("updated_date") %>' />
-                        <asp:Button ID="btnDetail" class="w-1/12 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Detail" OnClientClick="return setIssue(this);" OnClick="btnDetail_Click" /> 
+                        
+                        <asp:Button ID="btnDetail" class="w-1/12 bg-black hover:bg-gray-700 text-white py-2 mx-1" runat="server" Text="Detail"  OnClientClick="return setIssue(this);" OnClick="btnDetail_Click" />
+                        
                 
                     </li>
                 </ItemTemplate>

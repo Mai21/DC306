@@ -13,11 +13,13 @@ namespace ITS
 {
     public partial class Archive : System.Web.UI.Page
     {
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
+           
 
         private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ITSConnectionString"].ConnectionString;
         private SqlConnection conn;
@@ -30,11 +32,19 @@ namespace ITS
             cmd = new SqlCommand("Insert into issues (title_id, description) Values (@title_id, @description)", conn);
             
 
+        
         }
-        protected void btnUpdate_Click(object sender, EventArgs e)
+
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
     }
 }
+    
    

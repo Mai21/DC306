@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student.Master" AutoEventWireup="true" CodeBehind="CreateTicket.aspx.cs" Inherits="ITS.CreateTicket" %>
-        
-<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-        </asp:Content>
+      
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
         <style type="text/css">
             .auto-style1 {
@@ -10,8 +11,9 @@
             }
         </style>
         </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-   
+   <div id="extra" class="container w-full items-center max-w-md mx-auto my-8 px-8 pt-6 pb-8">
      <%-- This is the main form of Creating Ticket --%>
     <form id="form1" runat="server" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">   
        
@@ -38,6 +40,7 @@
             </asp:DropDownList>
         </div>
 
+        <%-- This is the label for the message --%>
         <div class="w-full text-gray-900 mt-6 md:mt-0 leading-normal">
           <asp:Label ID="lblMessage" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
         </div>
@@ -64,4 +67,5 @@
         </div>
 
     </form>
+    </div>
 </asp:Content>
