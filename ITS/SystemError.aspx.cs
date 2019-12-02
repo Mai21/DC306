@@ -7,18 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace ITS
 {
-    public partial class Admin : System.Web.UI.MasterPage
+    public partial class SystemError : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            // session clear
-            Session.Clear();
-            Response.Redirect("Login.aspx");
         }
     }
 }

@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-    <form id="form1" runat="server" class="font-sans text-sm rounded max-w-md mx-auto my-8 px-8 pt-6 pb-8 w-1/2"> 
-		<h2>Please enter a new password below.</h2>
+	<div class="container max-w-xl m-auto h-65">
+        <h2>Please enter a new password below.</h2>
         <section class="bg-white">
             <div class="container py-2 px-4">
                 <div>
@@ -25,5 +25,5 @@
 		        </div>
             </div>
         </section>
-    </form>
+    </div>
 </asp:Content>

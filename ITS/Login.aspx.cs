@@ -105,8 +105,7 @@ namespace ITS
                     // System Error
                     Console.WriteLine(ex.Message);
                     // Move to an Error page
-                    //lbErrMessage.Text = "System Error!";
-                    return;
+                    Response.Redirect("SystemError.aspx");
                 }
             }
             // Insert User Last Login Date
@@ -133,12 +132,11 @@ namespace ITS
                     "VALUES(@userId, CURRENT_TIMESTAMP)", con);
 
                 cmd.Parameters.AddWithValue("@userId", tbUserID.Text);
-
                 con.Open();
 
                 if (cmd.ExecuteNonQuery() != 1)
                 {
-                    // Go to System Error Page
+                    Response.Redirect("SystemError.aspx");
                 }
             }
         }

@@ -160,8 +160,7 @@ namespace ITS
                         // System Error
                         Console.WriteLine(ex.Message);
                         // Move to an Error page
-                        lbMessage.Text = "System Error!";
-                        return;
+                        Response.Redirect("SystemError.aspx");
                     }
                 }
                 else
@@ -215,8 +214,7 @@ namespace ITS
                         // System Error
                         Console.WriteLine(ex.Message);
                         // Move to an Error page
-                        lbMessage.Text = "System Error!";
-                        return;
+                        Response.Redirect("SystemError.aspx");
                     }
                 }
 

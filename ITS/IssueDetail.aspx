@@ -4,20 +4,20 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-        <form id="form1" runat="server" class="font-sans text-sm rounded mx-auto px-8 pt-6 pb-8 w-1/2"> 
-		<h2>No.<asp:Label ID="lbId" runat="server" Text=""></asp:Label> <asp:Label ID="lbTitle" runat="server" Text=""></asp:Label></h2>
-        <section class="bg-white">
+    <div class="container max-w-xl m-auto">
+        <h2>No.<asp:Label ID="lbId" runat="server" Text=""></asp:Label> <asp:Label ID="lbTitle" runat="server" Text=""></asp:Label></h2>
+        <section class="bg-white px-8">
             <div class="container py-2 px-4">
                 <div>
 			        <asp:Label ID="lbMessage" class="text-red" runat="server" Text=""></asp:Label>
 		        </div>
                 <div class="flex-1 overflow-hidden">
                     <div>
-                      <span class="font-bold">
-                          <asp:Label ID="lbFirstName" runat="server" Text=""></asp:Label>
-                          <asp:Label ID="lbLastName" runat="server" Text=""></asp:Label>
-                      </span>
-                      <span class="text-gray-700 text-xs"><asp:Label ID="lbUserID" runat="server" Text=""></asp:Label></span>
+                        <span class="font-bold">
+                            <asp:Label ID="lbFirstName" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lbLastName" runat="server" Text=""></asp:Label>
+                        </span>
+                        <span class="text-gray-700 text-xs"><asp:Label ID="lbUserID" runat="server" Text=""></asp:Label></span>
                     </div>
                     <p class="text-black leading-normal"><asp:Label ID="lbLastUpdateDate" runat="server" Text=""></asp:Label></p>
                 </div>
@@ -37,5 +37,5 @@
 		        </div>
             </div>
         </section>
-    </form>
+    </div>
 </asp:Content>

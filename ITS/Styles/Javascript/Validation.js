@@ -319,38 +319,32 @@ var clearInputInfo = function () {
         $(this).find('div.hf').children('input').val('');
         $("input[type='radio']").val(["0"]);
     });
-    $("#inputArea > span").each(function () {
+    $('#inputArea > span').each(function () {
         $(this).html('');
     });
 };
 
 var clearLabel = function () {
-    $("#inputArea > span").each(function () {
+    $('#inputArea > span').each(function () {
         $(this).html('');
     });
 };
 
 function validationRecover() {
-    var userid = document.getElementById('contentBody_tbUserID').value;
+    var emailErr = valEmail();
+    var isErr = false;
+    $('#contentBody_lbMessage').html('');
 
-    var errMessageUserID = '';
-
-    // Check ID if blank and including symbols
-    if (!userid) {
-        errMessageUserID = 'UserID is empty!'
-    } else {
-        var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
-        if (reg.test(userid)) {
-            errMessageUserID = 'Symbols are not allowed in UserID'
-        }
+    if (emailErr) {
+        isErr = true;
+        $('#contentBody_lbMessage').html(emailErr);
     }
 
-    if (!errMessageUserID) {
+    if (!isErr) {
         // No error
         return true;
     } else {
         // Error, don't move to dashboard
-        document.getElementById('contentBody_lbMessage').innerText = errMessageUserID;
         return false;
     }
 };

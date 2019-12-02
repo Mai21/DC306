@@ -15,25 +15,27 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav class="font-sans bg-white text-center flex justify-between items-center mx-auto mt-4 mb-6 px-8 mx-auto container overflow-hidden">
-        <a href="/" class="block text-left">
-            <img src="images/306logo.png" class="h-11 rounded-full" alt="logo">
-        </a>
-        <div class="clear"></div>
-
-                <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
-                    <li> <a href="/DashboardSP.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Dashboard</a></li>
-                    <li> <a href="/Issues.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Tasks</a></li>
-                    <li> <a href="/TitleMaintenace.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Title Maintenance</a></li>
-                    <li> <a href="/UserMaintenance.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">User Maintenance</a></li>
-                </ul>
-    
-     </nav>   
-     <div class="content px-8">
-                <asp:ContentPlaceHolder ID="contentBody" runat="server">
-                </asp:ContentPlaceHolder>
-    </div>
-     
+    <form id="form1" runat="server" class="font-sans text-sm rounded w-full mx-auto">
+        <nav class="font-sans bg-white text-center flex justify-between items-center mx-auto mt-4 mb-6 px-8 mx-auto container overflow-hidden">
+            <a href="/" class="block text-left">
+                <img src="images/306logo.png" class="h-11 rounded-full" alt="logo">
+            </a>
+            <div class="clear"></div>
+            <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
+                <li> <a href="/DashboardSP.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Dashboard</a></li>
+                <li> <a href="/Issues.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Tasks</a></li>
+                <li> <a href="/TitleMaintenace.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Title Maintenance</a></li>
+                <li> <a href="/UserMaintenance.aspx" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">User Maintenance</a></li>
+                <li>
+                    <asp:Button ID="btnLogout" class="bg-black hover:bg-gray-700 text-white py-2 px-4" runat="server" Text="Logout" accesskey="4" OnClick="btnLogout_Click"/>
+                </li>
+            </ul>
+         </nav>   
+         <div class="content">
+                    <asp:ContentPlaceHolder ID="contentBody" runat="server">
+                    </asp:ContentPlaceHolder>
+        </div>
+    </form> 
     <div class="clear"></div>
         <footer class="font-sans bg-black text-white py-8 px-4">
             <div class="pt-4 mt-4 text-gray-700 border-t border-gray-900 text-center"> ©2019 Tuam Academy. All rights reserved.</div>

@@ -173,9 +173,17 @@ textarea:-ms-input-placeholder {
     line-height: 1.5;
 }
 
+.leading-loose {
+    line-height: 2;
+}
+
 /* width */
 .w-full {
     width: 100%;
+}
+
+.max-w-lg {
+    max-width: 32rem;
 }
 
 .max-w-md {
@@ -257,6 +265,8 @@ textarea:-ms-input-placeholder {
     width: 2.5rem;
 }
 
+
+
 .sm\:w-3\/4 {
     width: 75%;
 }
@@ -276,6 +286,10 @@ textarea:-ms-input-placeholder {
     height: 3rem;
 }
 
+.h-65 {
+    height: 65vh;
+}
+
 .h-99 {
     height: 24rem;
 }
@@ -289,6 +303,10 @@ textarea:-ms-input-placeholder {
 .mx-1 {
     margin-left: 0.25rem;
     margin-right: 0.25rem;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
 }
 
 .mt-2 {
@@ -314,6 +332,11 @@ textarea:-ms-input-placeholder {
 
 .mb-6 {
     margin-bottom: 1.5rem;
+}
+
+.mx-6 {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 .my-8 {
@@ -415,6 +438,10 @@ textarea:-ms-input-placeholder {
     background-color: #FFF;
 }
 
+.bg-gray-900 {
+    background-color: #1a202c;
+}
+
 .hover\:bg-black:hover {
     background-color: #000;
 }
@@ -454,6 +481,10 @@ textarea:-ms-input-placeholder {
 
 .text-xs {
     font-size: 0.75rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
 }
 
 .text-white {

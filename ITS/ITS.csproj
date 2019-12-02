@@ -89,10 +89,10 @@
     <Content Include="LICENSE.txt" />
     <Content Include="Login.aspx" />
     <Content Include="Recover.aspx" />
-    <Content Include="Register.aspx" />
     <Content Include="Styles\Css\main.css" />
     <Content Include="Styles\Html\header.html" />
     <Content Include="Styles\Css\login.css" />
+    <Content Include="SystemError.aspx" />
     <Content Include="TitleMaintenace.aspx" />
     <Content Include="UserMaintenance.aspx" />
     <Content Include="Web.config" />
@@ -185,13 +185,6 @@
     <Compile Include="RecoverPassoword.aspx.designer.cs">
       <DependentUpon>RecoverPassoword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -205,6 +198,13 @@
     </Compile>
     <Compile Include="Student.Master.designer.cs">
       <DependentUpon>Student.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SystemError.aspx.cs">
+      <DependentUpon>SystemError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemError.aspx.designer.cs">
+      <DependentUpon>SystemError.aspx</DependentUpon>
     </Compile>
     <Compile Include="TitleMaintenace.aspx.cs">
       <DependentUpon>TitleMaintenace.aspx</DependentUpon>

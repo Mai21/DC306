@@ -76,7 +76,6 @@ namespace ITS
                             lbLastUpdateDate.Text = rdr.GetValue(7).ToString();
                             dlStatusList.SelectedIndex = (int)rdr.GetValue(6);
                             status = (int)rdr.GetValue(6);
-                            System.Diagnostics.Debug.WriteLine("1" + status);
 
                             // if status is solved, it can not be updated. 
                             if ((int)rdr.GetValue(6) == (int)CommonUtil.ISSUSTATUS.SOLVED)
@@ -93,14 +92,15 @@ namespace ITS
                     // System Error
                     Console.WriteLine(ex.Message);
                     // Move to an Error page
-                    //lbErrMessage.Text = "System Error!";
-                    return;
+                    Response.Redirect("SystemError.aspx");
                 }
             }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine(dlStatusList.SelectedIndex);
+            
             if (tbDescriptionAdd.Text.Length == 0 && dlStatusList.SelectedIndex == status) {
                 // no change
                 lbMessage.Text = "No change!";
@@ -134,8 +134,7 @@ namespace ITS
                     // System Error
                     Console.WriteLine(ex.Message);
                     // Move to an Error page
-                    lbMessage.Text = "System Error!";
-                    return;
+                    Response.Redirect("SystemError.aspx");
                 }
             }
         }

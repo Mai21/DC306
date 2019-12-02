@@ -22,7 +22,7 @@ namespace ITS
                 return;
             }
 
-            tbUserID.Attributes.Add("placeholder", "Input UserID");
+            tbUserID.Attributes.Add("placeholder", "Input StudentID");
             tbPassword.Attributes.Add("placeholder", "Input new Password");
             tbConfirm.Attributes.Add("placeholder", "Input Confirm Password");
             tbUserID.Attributes.Add("maxlength", "8");
@@ -39,7 +39,7 @@ namespace ITS
             bool correctUserId = BCrypt.Verify(userId, key);
             if (correctUserId != true)
             {
-                lbMessage.Text = "Input a correct UserID!";
+                lbMessage.Text = "Input a correct StudentID!";
                 return;
             }
             // check if the valid time
@@ -58,31 +58,30 @@ namespace ITS
                 {
                     using (SqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        System.Diagnostics.Debug.WriteLine(rdr.HasRows.ToString());
-                        if (rdr.HasRows)
+                        if (rdr.Read())
                         {
-                            if (rdr.Read())
-                            {
-                                System.Diagnostics.Debug.WriteLine(rdr.GetValue(0).ToString());
-                                DateTime requestDt = DateTime.Parse(rdr.GetValue(0).ToString());
-                                int result = DateTime.Compare(requestDt, DateTime.Now);
-                                System.Diagnostics.Debug.WriteLine("here3");
-                                // check time
-                                // 24 hours is 86,400 second 
-                                if (result < -86400)
-                                {
-                                    lbMessage.Text = "This Request has been expired!";
-                                    deleteRecord(userId);
-                                    return;
-                                }
-                                //OK
-                                deleteRecord(userId);
+                            if (rdr.GetValue(0).ToString() == "") {
+                                lbMessage.Text = "This request has been expired!\n Please request again.";
+                                return;
                             }
+                            DateTime requestDt = DateTime.Parse(rdr.GetValue(0).ToString());
+                            int result = DateTime.Compare(requestDt, DateTime.Now);
+                            System.Diagnostics.Debug.WriteLine("here3");
+                            // check time
+                            // 24 hours is 86,400 second 
+                            if (result < -86400)
+                            {
+                                lbMessage.Text = "This request has been expired!\n Please request again.";
+                                deleteRecord(userId);
+                                return;
+                            }
+                            //OK
+                            deleteRecord(userId);
                         }
                         else
                         {
                             // No user Id exists
-                            lbMessage.Text = "This Request has been expired!";
+                            lbMessage.Text = "This request has been expired!\n Please request again.";
                             return;
                         }
                     }
@@ -110,50 +109,15 @@ namespace ITS
                     // System Error
                     Console.WriteLine(ex.Message);
                     // Move to an Error page
-                    lbMessage.Text = "System Error!";
-                    return;
+                    Response.Redirect("SystemError.aspx");
                 }
             }
-
-/*            try
-            {
-                using (SqlConnection con = new SqlConnection(Globals.connstr))
-                {
-                    SqlCommand cmd = new SqlCommand("" +
-                        "UPDATE users SET password = @password, updated_user = @activeUser, updated_date = CURRENT_TIMESTAMP " +
-                        "WHERE id = @userId ", con);
-
-                    cmd.Parameters.AddWithValue("@userId", tbUserID.Text.Trim());
-                    cmd.Parameters.AddWithValue("@password", BCrypt.HashPassword(tbPassword.Text.Trim(), BCrypt.GenerateSalt()));
-                    cmd.Parameters.AddWithValue("@activeUser", "admin");
-
-                    con.Open();
-                    if (cmd.ExecuteNonQuery() != 1)
-                    {
-                        lbMessage.Text = "Changing password was failed!";
-                        return;
-                    }
-                    else
-                    {
-                        lbMessage.Text = "Password was changed!";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Error
-                Console.WriteLine(ex.Message);
-                // Move to an Error page
-                lbMessage.Text = "System Error!";
-                return;
-            }*/
         }
 
         private void deleteRecord(string userId) {
             // delete record from password recovery
             using (SqlConnection con = new SqlConnection(Globals.connstr))
             {
-                System.Diagnostics.Debug.WriteLine("delete start");
                 SqlCommand cmd = new SqlCommand("" +
                     "DELETE FROM password_recovery " +
                     "WHERE user_id = @userId", con);
@@ -163,7 +127,6 @@ namespace ITS
 
                 con.Open();
                 cmd.ExecuteNonQuery();
-                System.Diagnostics.Debug.WriteLine("after delete");
             }
         }
     }
