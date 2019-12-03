@@ -179,7 +179,6 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MySqlConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recover.aspx.cs">
       <DependentUpon>Recover.aspx</DependentUpon>
